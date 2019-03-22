@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catch a bottle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link id="favicon" rel="shortcut icon" type="image/png" href="assets/img/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Pinyon+Script" rel="stylesheet">
+</head>
+
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="assets/img/background.mp4" type="video/mp4">
+    </video>
+
+    <!--######################################  LOGIN PAGE  ######################################-->
+    <div id="login_page_container">
+        <h1>Catch a bottle 🍾</h1>
+        <div>
+            <input name="p" required="required" id="nickname" placeholder="nickname" />
+            <button type="submit" class="btn btn-primary btn-block btn-large" id="login"><b>Login</b></button>
+        </div>
+    </div>
+
+    <!--######################################  SEA PAGE  ######################################-->
+    <div id="game_page_container" class="row">
+
+        <div id="left_column_game" class="column_players">
+
+
+        </div>
+
+        <div id="mid_column_game" class="column_canvas">
+            <div id="3d_canvas">
+                <canvas id="canvas"></canvas>
+
+            </div>
+        </div>
+
+        <div id="right_column_game" class="column_chat">
+
+            <input name="p" required="required" id="message" placeholder="message" />
+            <input name="p" required="required" id="color" placeholder="color" />
+            <button type="submit" class="btn btn-primary btn-block btn-large" id="send"><b>New bottle</b></button>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="js/scene.js"></script>
+    <script src="js/client.js"></script>
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>
