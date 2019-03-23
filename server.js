@@ -263,6 +263,7 @@ function newBottle(client, client_msg) {
 
                 bottle_list.push(new_bottle);
 
+                // throwBottletoWater(client, new_bottle);
 
                 //aqui faltaria enviarli a tothom la nova ampolla, shauria de fer algo semblant a updateuse
                 var msg = {
@@ -284,4 +285,12 @@ function newBottle(client, client_msg) {
 
     client.send(JSON.stringify(msg));
 
+}
+
+function throwBottletoWater(client, new_bottle) {
+    for (var i = 0; i<clients.length; i++){
+        if (clients[i].nickname !== client.nickname){
+
+        }
+    }
 }
