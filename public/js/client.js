@@ -44,7 +44,9 @@ function Client() {
         } else if (data.msg_type === 'newBottle_await') {
             console.log('Faltan ' + (60.0 - (data.time / 1000)) + ' segundos para poder publicar un mensage')
         }
-
+        else if (data.msg_type === 'update_water_bottles') {
+            this.canvas_bottles = data.bottle_list;
+        }
     };
 
     this.login = (nickname, callback_fn) => {
