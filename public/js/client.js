@@ -43,6 +43,9 @@ function Client() {
             console.log(data)
         } else if (data.msg_type === 'newBottle_await') {
             console.log('Faltan ' + (60.0 - (data.time / 1000)) + ' segundos para poder publicar un mensage')
+
+        } else if (data.msg_type === 'removed_bottle') {
+            remove_bottle(data.bottle_id);
         }
 
     };
@@ -131,5 +134,12 @@ function Client() {
     function add_new_bottle(bottle) {
         //asignar posicio a la nova bottle
         //afegir bottle al array canvas bottle
+    }
+
+    function remove_bottle(bottle_id){
+        for (var i = 0; i < canvas_bottles.length; i++) { //elimina botella de local
+            if(bottle_id==canvas_bottles[i].id){
+            }
+        }
     }
 }

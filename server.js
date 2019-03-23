@@ -237,8 +237,9 @@ function removeBottle(client, client_msg) {
         }
     }
 
-    var msg = {
+    var msg = {//aixo sha denviar a tothom
         'msg_type': 'removed_bottle'
+        'bottle_id': client_msg.bottle_id
     };
     client.send(JSON.stringify(msg));
 
