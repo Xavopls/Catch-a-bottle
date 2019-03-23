@@ -1,3 +1,5 @@
+
+
 var my_circle = { //my_circle NO se va guardando en ningun sitio! my_circle se reescribe en cada "pintada" y se PIERDE
 	tipo: 'circulo',
 	color: 'black',
@@ -5,6 +7,10 @@ var my_circle = { //my_circle NO se va guardando en ningun sitio! my_circle se r
 	positionX: '2',
 	positionY: '2',
 };
+
+//Escucha de boton My Bottles
+var MyBottles_buton = document.querySelector("#myBottlesButton");
+MyBottles_buton.addEventListener("click", sendChatMessage);
 
 
 var clic = 0;
@@ -53,3 +59,4 @@ function limpia() { //Eliminamos todo lo pintado en el canvas y pintamos de nuev
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.drawImage(background, 0, 0);
 }
+
