@@ -193,8 +193,6 @@ function login(client, client_msg) {
 function searchBottle(client, client_msg) {
     var id = client_msg.bottle_id;
 
-    //var bottle_list=       Hauriem de carregar desde la BBDD
-
     for (var i = 0; i < bottle_list.length; i++) {
         if (id == bottle_list[i].id) {
             var msg = {
@@ -203,7 +201,7 @@ function searchBottle(client, client_msg) {
             };
             client.send(JSON.stringify(msg));
 
-            //eliminar bottle de la BBDD
+            bottle_list.splice(i,1); //eliminem botella del mar
         }
     }
 }

@@ -1,6 +1,6 @@
 function showMyBottles(list_bottles) {
 
-    if(client.stored_bottles.length>0){
+    if (client.stored_bottles.length > 0) {
         for (var i = 0; i < client.stored_bottles.length; i++) { //busquem el client a la BBDD
             var creator = document.createElement("p");
             creator.innerHTML = client.stored_bottles[i].creator;
@@ -17,7 +17,7 @@ function showMyBottles(list_bottles) {
             button.id = client.stored_bottles[i].id;
 
             var element = document.createElement("div");
-            element.id= client.stored_bottles[i].id;
+            element.id = client.stored_bottles[i].id;
             element.appendChild(creator);
             element.appendChild(color);
             element.appendChild(msg);
@@ -25,10 +25,46 @@ function showMyBottles(list_bottles) {
 
             document.querySelector("#left_column_game").appendChild(element);
         }
-    }
-
-    else {
+    } else {
         alert("You have no bottles! Hurry up and catch one!");
     }
+
+}
+
+function showCanvas() {
+    var canvas = document.createElement("canvas");
+    canvas.id = "canvas";
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+
+    var list = document.querySelector("#game_page_container");
+    list.insertBefore(canvas, list.childNodes[0]);
+
+    client.canvas = document.querySelector("#canvas");
+    client.context = this.client.canvas.getContext('2d');
+
+
+
+
+    client.canvas.addEventListener('click', function (e) {
+        var x = e.pageX - client.canvas.offsetLeft;
+        var y = e.pageY - client.canvas.offsetTop;
+        var id;
+        console.log("entra")
+        
+        client.canvas_bottles.forEach(function (element) {
+            if (Math.pow(x - element.x, 2) + Math.pow(y - element.y, 2) < Math.pow(client.diameter, 2)) {
+                
+                id = element.id;
+
+                //aqui hem de demanari al server el creador i el msg de la botella segons id
+
+                client.search_bottle(id);
+
+            }
+
+        });
+    });
 
 }

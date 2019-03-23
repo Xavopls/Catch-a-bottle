@@ -6,21 +6,41 @@ MyBottles_buton.addEventListener("click", showMyBottles);
 
 
 
-var canvas = document.querySelector("canvas");
+function getMousePos(c, evt) {
+    var rect = client.canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+};
 
-function setCanvas(el) {
-	var xPosition = 0;
-	var yPosition = 0;
 
-	//ctx.drawImage(background, 0, 0); //Pintamos el fondo del canvas
 
-	while (el) {
-		xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-		yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
-		el = el.offsetParent;
+function makeCircle(context, x, y, color) {
+	context.beginPath();
+	context.arc(x, y, client.diameter, 0, Math.PI * 2, true);
+	context.fillStyle = color;
+	context.fill();
+	context.closePath();
+};
+
+
+function drawFrame() {
+
+	var canvas = client.canvas;
+	var context = client.context;
+
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+	for (var circle of client.canvas_bottles) {
+		makeCircle(context, circle.x, circle.y, circle.color);
 	}
-	return {
-		x: xPosition,
-		y: yPosition
-	};
+
+	requestAnimationFrame(drawFrame);
 }
+
+
+
+
+

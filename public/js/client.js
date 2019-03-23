@@ -4,6 +4,9 @@ function Client() {
     this.id = "";
     this.stored_bottles = [];
     this.canvas_bottles = [];
+    this.canvas;
+    this.context;
+    this.diameter = 20;
 
     this.ws = new WebSocket('ws://localhost:9048');
     //this.ws = new WebSocket('ws://ecv-etic.upf.edu:9048');
@@ -110,36 +113,32 @@ function Client() {
 
         document.querySelector("#login_page_container").style.display = "none"; //Ocultamos login y desplegamos el chat
         document.querySelector("#game_page_container").style.display = "inline";
-        
-        canvasPos = setCanvas(canvas);
-        var x=Math.floor((Math.random() * canvas.width) + 1);
-        var y=Math.floor((Math.random() * canvas.width) + 1);
 
-        for (var i = 0; i <  this.client.canvas_bottles.length; i++) {
-            this.client.canvas_bottles[i].x=x;
-            this.client.canvas_bottles[i].y=y; 
+
+        showCanvas();
+
+
+
+
+        for (var i = 0; i < this.client.canvas_bottles.length; i++) {
+
+            var x = Math.floor((Math.random() * canvas.width) + 1);
+            var y = Math.floor((Math.random() * canvas.width) + 1);
+
+            this.client.canvas_bottles[i].x = x;
+            this.client.canvas_bottles[i].y = y;
         }
 
-        //setup canvas
-        //de la canvas_bottles assignar posicio random i afegirho al struct
+        drawFrame();
+
     }
 
     function catched_bottle(bottle) {
-        //pop up del missatge
-
-        //buscar empolla del canvas i borrarla
-
+                alert(bottle.creator + ": " + bottle.msg);
     }
 
     function add_new_bottle(bottle) {
         //asignar posicio a la nova bottle
         //afegir bottle al array canvas bottle
-    }
-
-    function remove_bottle(bottle_id){
-        for (var i = 0; i < canvas_bottles.length; i++) { //elimina botella de local
-            if(bottle_id==canvas_bottles[i].id){
-            }
-        }
     }
 }
