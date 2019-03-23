@@ -30,7 +30,7 @@ function Client() {
             this.onResponse(msg);
 
         } else if (data.msg_type === 'logged_user') {
-            console.log(data)
+            console.log(data);
             initialize(data);
 
 

@@ -1,5 +1,3 @@
-
-
 var my_circle = { //my_circle NO se va guardando en ningun sitio! my_circle se reescribe en cada "pintada" y se PIERDE
 	tipo: 'circulo',
 	color: 'black',
@@ -10,7 +8,7 @@ var my_circle = { //my_circle NO se va guardando en ningun sitio! my_circle se r
 
 //Escucha de boton My Bottles
 var MyBottles_buton = document.querySelector("#myBottlesButton");
-MyBottles_buton.addEventListener("click", sendChatMessage);
+MyBottles_buton.addEventListener("click", showMyBottles);
 
 
 var clic = 0;

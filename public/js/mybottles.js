@@ -1,12 +1,6 @@
-
-if(data.client_bottle_list.length>0){
-    showMyBottles(data.client_bottle_list)
-}
-
-
 function showMyBottles(list_bottles) {
 
-    if(data.client_bottle_list.length>0){
+    if(client.client_bottle_list.length>0){
         for (var i = 0; i < list_bottles.length; i++) { //busquem el client a la BBDD
 
             var creator = document.createElement("p");
