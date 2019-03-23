@@ -50,7 +50,9 @@ function Client() {
         } else if (data.msg_type === 'removed_bottle') {
             remove_bottle(data.bottle_id);
         }
-
+        else if (data.msg_type === 'update_water_bottles') {
+            this.canvas_bottles = data.bottle_list;
+        }
     };
 
     this.login = (nickname, callback_fn) => {
