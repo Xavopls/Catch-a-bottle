@@ -2,7 +2,7 @@ function Client() {
 
     this.nickname = "";
     this.id = "";
-    this.client_bottle_list = [];
+    this.stored_bottles = [];
     this.canvas_bottles = [];
 
     this.ws = new WebSocket('ws://localhost:9048');
@@ -102,7 +102,7 @@ function Client() {
     function initialize(data) { //no se perque pero he de posar client abans dompli els propis atributs
         this.client.nickname = data.nickname;
         this.client.id = data.id;
-        this.client.client_bottle_list = data.client_bottle_list;
+        this.client.stored_bottles = data.stored_bottles;
         this.client.canvas_bottles = data.bottle_list;
 
         document.querySelector("#login_page_container").style.display = "none"; //Ocultamos login y desplegamos el chat
