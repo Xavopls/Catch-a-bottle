@@ -103,13 +103,21 @@ function Client() {
         this.client.nickname = data.nickname;
         this.client.id = data.id;
         this.client.client_bottle_list = data.client_bottle_list;
-        this.client.canvas_bottles = data.bottle_list;
+        this.client.canvas_bottles=data.bottle_list;
 
         document.querySelector("#login_page_container").style.display = "none"; //Ocultamos login y desplegamos el chat
         document.querySelector("#game_page_container").style.display = "inline";
-
-
+        
         canvasPos = setCanvas(canvas);
+/*
+        for (var i = 0; i < data.bottle_list; i++) {
+            var new_b=data.bottle_list[i];
+            new_b.x=Math.floor((Math.random() * ctx.width) + 1); //c ha de sortir del canvas algo tipus var c = document.getElementById('canvas');
+            new_b.y=Math.floor((Math.random() * ctx.width) + 1);
+            this.client.canvas_bottles.push(new_b);
+        }
+*/
+
 
         //setup canvas
         //de la canvas_bottles assignar posicio random i afegirho al struct

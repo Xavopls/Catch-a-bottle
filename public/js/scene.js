@@ -12,7 +12,7 @@ function setCanvas(el) {
 	var xPosition = 0;
 	var yPosition = 0;
 
-	ctx.drawImage(background, 0, 0); //Pintamos el fondo del canvas
+	//ctx.drawImage(background, 0, 0); //Pintamos el fondo del canvas
 
 	while (el) {
 		xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
