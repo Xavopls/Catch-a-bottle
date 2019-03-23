@@ -109,15 +109,13 @@ function Client() {
         document.querySelector("#game_page_container").style.display = "inline";
         
         canvasPos = setCanvas(canvas);
-/*
-        for (var i = 0; i < data.bottle_list; i++) {
-            var new_b=data.bottle_list[i];
-            new_b.x=Math.floor((Math.random() * ctx.width) + 1); //c ha de sortir del canvas algo tipus var c = document.getElementById('canvas');
-            new_b.y=Math.floor((Math.random() * ctx.width) + 1);
-            this.client.canvas_bottles.push(new_b);
-        }
-*/
+        var x=Math.floor((Math.random() * canvas.width) + 1);
+        var y=Math.floor((Math.random() * canvas.width) + 1);
 
+        for (var i = 0; i <  this.client.canvas_bottles.length; i++) {
+            this.client.canvas_bottles[i].x=x;
+            this.client.canvas_bottles[i].y=y; 
+        }
 
         //setup canvas
         //de la canvas_bottles assignar posicio random i afegirho al struct
