@@ -50,7 +50,8 @@ function Client() {
     this.last_bottle = 0;
 }
 
-var clients = []
+var clients = [];
+var clients_socket = [];
 var client_count = 5;
 
 var client = new Client();
@@ -169,7 +170,8 @@ function login(client, client_msg) {
         client_count++;
         new_user.id = client_count;
         clients.push(new_user);
-
+        client.nickname = client_msg.nickname;
+        clients_socket.push(client);
         id = new_user.id;
 
         console.log('Nuevo usuario: ' + new_user.nickname);
@@ -264,7 +266,8 @@ function newBottle(client, client_msg) {
 
                 bottle_list.push(new_bottle);
 
-                // throwBottletoWater(client, new_bottle);
+                // Everybody receives the updated sea bottle list array
+                throwBottletoWater();
 
                 //aqui faltaria enviarli a tothom la nova ampolla, shauria de fer algo semblant a updateuse
                 var msg = {
@@ -288,10 +291,13 @@ function newBottle(client, client_msg) {
 
 }
 
-function throwBottletoWater(client, new_bottle) {
-    for (var i = 0; i<clients.length; i++){
-        if (clients[i].nickname !== client.nickname){
+function throwBottletoWater() {
+    var msg = {
+        'msg_type': 'update_water_bottles',
+        'bottle_list' : bottle_list
+    };
 
-        }
+    for (var i = 0; i<clients_socket.length; i++){
+        clients_socket[i].send(JSON.stringify(msg));
     }
 }
