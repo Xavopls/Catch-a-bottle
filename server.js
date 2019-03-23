@@ -145,7 +145,7 @@ function login(client, client_msg) {
 
     var id;
     var bottle_list_send = [];
-    var client_bottle_list = [];
+    var stored_bottles = [];
 
 
     for (var i = 0; i < bottle_list.length; i++) { //aixo es fa per enviar la llista dampolles sense el msg
@@ -158,7 +158,7 @@ function login(client, client_msg) {
     for (var i = 0; i < clients.length; i++) { //busquem el client a la BBDD
         if (clients[i].nickname == client_msg.nickname) {
             id = clients[i].id;
-            client_bottle_list = clients[i].personal_bottle_list;
+            stored_bottles = clients[i].personal_bottle_list;
         }
     }
 
@@ -181,7 +181,7 @@ function login(client, client_msg) {
         'nickname': client_msg.nickname,
         'id': id,
         'bottle_list': bottle_list_send, //botelles generals
-        'client_bottle_list': client_bottle_list //botelles propies de lusuari
+        'stored_bottles': stored_bottles //botelles propies de lusuari
 
     };
     console.log('Usuario logeado: ' + client_msg.nickname);
