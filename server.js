@@ -204,6 +204,7 @@ function searchBottle(client, client_msg) {
             client.send(JSON.stringify(msg));
 
             bottle_list.splice(i,1); //eliminem botella del mar
+            // enviar a todos id de la botrella que ha dekiminar
         }
     }
 }
@@ -265,9 +266,8 @@ function newBottle(client, client_msg) {
                 bottle_list.push(new_bottle);
 
                 // Everybody receives the updated sea bottle list array
-                throwBottletoWater();
+                throwBottletoWater(new_bottle);
 
-                //aqui faltaria enviarli a tothom la nova ampolla, shauria de fer algo semblant a updateuse
                 var msg = {
                     'msg_type': 'newBottle_added',
                     'bottle': new_bottle
@@ -289,12 +289,12 @@ function newBottle(client, client_msg) {
 
 }
 
-function throwBottletoWater() {
+function throwBottletoWater(bottle) {
     var msg = {
-        'msg_type': 'update_water_bottles',
-        'bottle_list' : bottle_list
+        'msg_type': 'update_new_bottle',
+        'bottle_id' : bottle.id,
+        'bottle_color': bottle.color
     };
-
     for (var i = 0; i<clients_socket.length; i++){
         clients_socket[i].send(JSON.stringify(msg));
     }

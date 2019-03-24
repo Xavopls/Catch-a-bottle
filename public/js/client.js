@@ -1,9 +1,20 @@
+function Bottle() {
+    this.id = '';
+    this.creator = '';
+    this.color = '';
+    this.msg = '';
+    this.x = '';
+    this.y = '';
+}
+
+
 function Client() {
 
     this.nickname = "";
     this.id = "";
     this.stored_bottles = [];
     this.canvas_bottles = [];
+    this.sent_bottles_ids = [];
     this.canvas;
     this.context;
     this.diameter = 20;
@@ -50,8 +61,8 @@ function Client() {
         } else if (data.msg_type === 'removed_bottle') {
             remove_bottle(data.bottle_id);
         }
-        else if (data.msg_type === 'update_water_bottles') {
-            this.canvas_bottles = data.bottle_list;
+        else if (data.msg_type === 'update_new_bottle') {
+            add_new_bottle(data);
         }
     };
 
@@ -139,8 +150,13 @@ function Client() {
                 alert(bottle.creator + ": " + bottle.msg);
     }
 
-    function add_new_bottle(bottle) {
-        //asignar posicio a la nova bottle
-        //afegir bottle al array canvas bottle
+    function add_new_bottle(data) {
+        var new_bottle = new Bottle();
+        new_bottle.x = Math.floor((Math.random() * canvas.width) + 1);
+        new_bottle.y = Math.floor((Math.random() * canvas.width) + 1);
+        new_bottle.id = data.bottle_id;
+        new_bottle.color = data.bottle_color;
+        canvas_bottles.push(new_bottle);
+        this.canvas_bottles = data.bottle_list;
     }
 }
