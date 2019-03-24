@@ -60,8 +60,7 @@ function Client() {
 
         } else if (data.msg_type === 'removed_bottle') {
             remove_bottle(data.bottle_id);
-        }
-        else if (data.msg_type === 'update_new_bottle') {
+        } else if (data.msg_type === 'update_new_bottle') {
             add_new_bottle(data);
         }
     };
@@ -135,8 +134,8 @@ function Client() {
 
         for (var i = 0; i < this.client.canvas_bottles.length; i++) {
 
-            var x = Math.floor((Math.random() * canvas.width) + 1);
-            var y = Math.floor((Math.random() * canvas.width) + 1);
+            var x = Math.floor((Math.random() * (canvas.width - (this.client.diameter / 2))) + (this.client.diameter / 2));
+            var y = Math.floor((Math.random() * (canvas.height - (this.client.diameter / 2))) + (this.client.diameter / 2));
 
             this.client.canvas_bottles[i].x = x;
             this.client.canvas_bottles[i].y = y;
@@ -147,13 +146,13 @@ function Client() {
     }
 
     function catched_bottle(bottle) {
-                alert(bottle.creator + ": " + bottle.msg);
+        alert(bottle.creator + ": " + bottle.msg);
     }
 
     function add_new_bottle(data) {
         var new_bottle = new Bottle();
-        new_bottle.x = Math.floor((Math.random() * canvas.width) + 1);
-        new_bottle.y = Math.floor((Math.random() * canvas.width) + 1);
+        new_bottle.x = Math.floor((Math.random() * (canvas.width - (this.client.diameter / 2))) + (this.client.diameter / 2));
+        new_bottle.y = Math.floor((Math.random() * (canvas.height - (this.client.diameter / 2))) + (this.client.diameter / 2));
         new_bottle.id = data.bottle_id;
         new_bottle.color = data.bottle_color;
         canvas_bottles.push(new_bottle);

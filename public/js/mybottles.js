@@ -32,6 +32,12 @@ function showMyBottles(list_bottles) {
 }
 
 function showCanvas() {
+
+
+    var body=document.querySelector("body");//primero elimino el video de background
+    var video=document.querySelector("#myVideo");
+    body.removeChild(video);
+
     var canvas = document.createElement("canvas");
     canvas.id = "canvas";
     canvas.width = window.innerWidth;
