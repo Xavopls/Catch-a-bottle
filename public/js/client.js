@@ -40,43 +40,45 @@ function Client() {
 
     this.ws.onmessage = (msg) => {
         var data = JSON.parse(msg.data);
-        if (data.status === 'OK' || data.status === 'ERROR') {
-            this.onResponse(msg);
-        }
 
-        else if (data.msg_type === 'logged_user') {
-            initialize(data);
-        }
+        switch (data.msg_type) {
+            case 'logged_user':
+                initialize(data);
+                break;
 
-        else if (data.msg_type === 'catched_bottle') {
-            console.log(data)
-            catched_bottle(data.bottle);
-        }
+            case 'catched_bottle':
+                catched_bottle(data.bottle);
+                break;
 
-        else if (data.msg_type === 'newBottle_added') {
-            add_new_bottle(data.bottle);
-            console.log(data)
-        }
+            case 'newBottle_added':
+                add_new_bottle(data.bottle);
+                break;
 
-        else if (data.msg_type === 'newBottle_await') {
-            console.log('Faltan ' + (60.0 - (data.time / 1000)) + ' segundos para poder publicar un mensage')
-        }
+            case 'newBottle_await':
+                window.alert('You can not throw another bottle for ' + (60.0 - (data.time / 1000)) + ' seconds!')
+                break;
 
-        else if (data.msg_type === 'removed_bottle') {
-            remove_bottle(data.bottle_id);
-        }
+            case 'removed_bottle':
+                remove_bottle(data.bottle_id);
+                break;
 
-        else if (data.msg_type === 'delete_bottle_from_printed') {
-            deleteBottleFromPrinted(data.bottle_id);
-        }
+            case 'delete_bottle_from_printed':
+                deleteBottleFromPrinted(data.bottle_id);
+                break;
 
-        else if (data.msg_type === 'update_new_bottle') {
-            add_new_bottle(data);
-        }
+            case 'update_new_bottle':
+                add_new_bottle(data);
+                break;
 
-        else if (data.msg_type === 'bottle_not_found'){
-            window.alert('Somebody has picked the bottle before you! Be faster next time :)')
+            case 'bottle_not_found':
+                window.alert('Somebody has picked the bottle before you! Be faster next time :)')
+                break;
+
+            case 'catched_bottle_timeout':
+                window.alert('You can not get another bottle for ' + (60.0 - (data.time / 1000)) + ' seconds!')
+                break;
         }
+        
     };
 
     this.login = (nickname, callback_fn) => {
@@ -92,6 +94,7 @@ function Client() {
     this.search_bottle = (bottle_id, callback_fn) => {
         var message = {
             'msg_type': 'search_bottle',
+            'nickname': this.nickname,
             'bottle_id': bottle_id
         };
         this.ws.send(JSON.stringify(message));

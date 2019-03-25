@@ -47,7 +47,8 @@ function Client() {
     this.nickname = '';
     this.id = '';
     this.personal_bottle_list = [];
-    this.last_bottle = 0;
+    this.last_bottle_created_time = 0;
+    this.last_bottle_picked_time = 0;
 }
 
 var clients = [];
@@ -194,31 +195,43 @@ function login(client, client_msg) {
 
 
 function searchBottle(client, client_msg) {
-    var id = client_msg.bottle_id;
-    var found = false;
+    var timeout_info = lastBottlePickedTimeout(client_msg.nickname);
+    if (timeout_info[0]) {
+        var id = client_msg.bottle_id;
+        var found = false;
 
-    for (var i = 0; i < bottle_list.length; i++) {
-        if (id == bottle_list[i].id) {
+        for (var i = 0; i < bottle_list.length; i++) {
+            if (id == bottle_list[i].id) {
+                var msg = {
+                    'msg_type': 'catched_bottle',
+                    'bottle': bottle_list[i],
+                };
+                found = true;
+                client.send(JSON.stringify(msg));
+
+                bottle_list.splice(i,1); //eliminem botella del mar
+
+                // WE SEND THE ID OF THE PICKED BOTTLE TO ALL THE USERS,
+                // FOR THEM TO DELETE IT FROM THEIR LOCAL ARRAY OF BOTTLES (SO THEY WON'T PAINT IT IN THEIR LOCAL CANVAS)
+                deleteBottle_fromAllClients(id);
+            }
+        }
+
+        if (!found){
             var msg = {
-                'msg_type': 'catched_bottle',
-                'bottle': bottle_list[i],
+                'msg_type': 'bottle_not_found'
             };
-            found = true;
             client.send(JSON.stringify(msg));
-
-            bottle_list.splice(i,1); //eliminem botella del mar
-
-            // WE SEND THE ID OF THE PICKED BOTTLE TO ALL THE USERS,
-            // FOR THEM TO DELETE IT FROM THEIR LOCAL ARRAY OF BOTTLES (SO THEY WON'T PAINT IT IN THEIR LOCAL CANVAS)
-            deleteBottle_fromAllClients(id);
         }
     }
 
-    if (!found){
+    else {
         var msg = {
-            'msg_type': 'bottle_not_found',
+            'msg_type': 'catched_bottle_timeout',
+            'time': timeout_info[1]
         };
         client.send(JSON.stringify(msg));
+
     }
 
 }
@@ -262,41 +275,32 @@ function removeBottle(client, client_msg) {
 
 
 function newBottle(client, client_msg) {
+    var timeout_info = lastBottleThrownTimeout(client_msg.nickname);
+    if(timeout_info[0]){
+        var new_bottle = new Bottle();
+        bottle_count++;
+        new_bottle.id = bottle_count;
+        new_bottle.creator = client_msg.nickname;
+        new_bottle.color = client_msg.color;
+        new_bottle.msg = client_msg.msg;
 
-    for (var i = 0; i < clients.length; i++) { //busquem el client a la BBDD
-        if (clients[i].nickname == client_msg.nickname) {
+        bottle_list.push(new_bottle);
 
-            var diff = Math.abs(new Date() - clients[i].last_bottle);
+        // Everybody receives the updated sea bottle list array
+        throwBottletoWater(new_bottle);
 
-            if (diff > 60000) { //1 minut
+        var msg = {
+            'msg_type': 'newBottle_added',
+            'bottle': new_bottle
+        };
+        console.log('Nueva botella añadida');
+    }
 
-                var new_bottle = new Bottle();
-                bottle_count++;
-                new_bottle.id = bottle_count;
-                new_bottle.creator = client_msg.nickname;
-                new_bottle.color = client_msg.color;
-                new_bottle.msg = client_msg.msg;
-
-                bottle_list.push(new_bottle);
-
-                // Everybody receives the updated sea bottle list array
-                throwBottletoWater(new_bottle);
-
-                var msg = {
-                    'msg_type': 'newBottle_added',
-                    'bottle': new_bottle
-                };
-
-                clients[i].last_bottle = new Date();
-                console.log('Nueva botella añadida');
-            } else {
-
-                var msg = {
-                    'msg_type': 'newBottle_await',
-                    'time': diff
-                };
-            }
-        }
+    else {
+        var msg = {
+            'msg_type': 'newBottle_await',
+            'time': timeout_info[1]
+        };
     }
 
     client.send(JSON.stringify(msg));
@@ -324,3 +328,33 @@ function deleteBottle_fromAllClients(id){
         clients_socket[i].send(JSON.stringify(msg));
     }
 }
+
+
+var lastBottlePickedTimeout = function(nickname){
+    for (var i = 0; i < clients.length; i++) {
+        if (clients[i].nickname === nickname) {
+            var diff = Math.abs(new Date() - clients[i].last_bottle_picked_time);
+            if ( diff > 60000 ){
+                clients[i].last_bottle_picked_time = new Date();
+                return [true, diff];
+            }
+            else
+                return [false, diff];
+        }
+    }
+};
+
+
+var lastBottleThrownTimeout = function(nickname){
+    for (var i = 0; i < clients.length; i++) {
+        if (clients[i].nickname === nickname) {
+            var diff = Math.abs(new Date() - clients[i].last_bottle_created_time);
+            if ( diff > 60000 ){
+                clients[i].last_bottle_created_time = new Date();
+                return [true, diff];
+            }
+            else
+                return [false, diff];
+        }
+    }
+};
