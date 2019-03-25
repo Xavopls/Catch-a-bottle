@@ -42,26 +42,40 @@ function Client() {
         var data = JSON.parse(msg.data);
         if (data.status === 'OK' || data.status === 'ERROR') {
             this.onResponse(msg);
+        }
 
-        } else if (data.msg_type === 'logged_user') {
-            console.log(data);
+        else if (data.msg_type === 'logged_user') {
             initialize(data);
+        }
 
-
-        } else if (data.msg_type === 'catched_bottle') {
+        else if (data.msg_type === 'catched_bottle') {
             console.log(data)
             catched_bottle(data.bottle);
+        }
 
-        } else if (data.msg_type === 'newBottle_added') {
+        else if (data.msg_type === 'newBottle_added') {
             add_new_bottle(data.bottle);
             console.log(data)
-        } else if (data.msg_type === 'newBottle_await') {
-            console.log('Faltan ' + (60.0 - (data.time / 1000)) + ' segundos para poder publicar un mensage')
+        }
 
-        } else if (data.msg_type === 'removed_bottle') {
+        else if (data.msg_type === 'newBottle_await') {
+            console.log('Faltan ' + (60.0 - (data.time / 1000)) + ' segundos para poder publicar un mensage')
+        }
+
+        else if (data.msg_type === 'removed_bottle') {
             remove_bottle(data.bottle_id);
-        } else if (data.msg_type === 'update_new_bottle') {
+        }
+
+        else if (data.msg_type === 'delete_bottle_from_printed') {
+            deleteBottleFromPrinted(data.bottle_id);
+        }
+
+        else if (data.msg_type === 'update_new_bottle') {
             add_new_bottle(data);
+        }
+
+        else if (data.msg_type === 'bottle_not_found'){
+            window.alert('Somebody has picked the bottle before you! Be faster next time :)')
         }
     };
 
@@ -146,7 +160,9 @@ function Client() {
     }
 
     function catched_bottle(bottle) {
-        alert(bottle.creator + ": " + bottle.msg);
+        // STORE CAUGHT BOTTLE INTO MY ARRAY OF STORED BOTTLES
+        this.client.stored_bottles.push(bottle);
+        window.alert(bottle.creator + ": " + bottle.msg);
     }
 
     function add_new_bottle(data) {
@@ -156,6 +172,14 @@ function Client() {
         new_bottle.id = data.bottle_id;
         new_bottle.color = data.bottle_color;
         canvas_bottles.push(new_bottle);
-        this.canvas_bottles = data.bottle_list;
+        this.client.canvas_bottles = data.bottle_list;
+    }
+
+    function deleteBottleFromPrinted(id) {
+        for (var i = 0; i<this.client.canvas_bottles.length; i++){
+            if (this.client.canvas_bottles[i].id === id){
+                this.client.canvas_bottles.splice(i, 1);
+            }
+        }
     }
 }

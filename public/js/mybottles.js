@@ -65,7 +65,6 @@ function showCanvas() {
                 id = element.id;
 
                 //aqui hem de demanari al server el creador i el msg de la botella segons id
-
                 client.search_bottle(id);
 
             }

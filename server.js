@@ -117,7 +117,7 @@ wss.on('connection', function (client) {
         } catch (e) {
             return
         }
-console.log("Nuevo mensaje: "+client_msg)
+        console.log("Nuevo mensaje: "+client_msg)
         switch (client_msg.msg_type) {
 
             case 'login_user':
@@ -135,6 +135,7 @@ console.log("Nuevo mensaje: "+client_msg)
             case 'keep_bottle':
                 keepBottle(client, client_msg);
                 break;
+
             case 'remove_bottle':
                 removeBottle(client, client_msg);
                 break;
@@ -194,6 +195,7 @@ function login(client, client_msg) {
 
 function searchBottle(client, client_msg) {
     var id = client_msg.bottle_id;
+    var found = false;
 
     for (var i = 0; i < bottle_list.length; i++) {
         if (id == bottle_list[i].id) {
@@ -201,12 +203,24 @@ function searchBottle(client, client_msg) {
                 'msg_type': 'catched_bottle',
                 'bottle': bottle_list[i],
             };
+            found = true;
             client.send(JSON.stringify(msg));
 
             bottle_list.splice(i,1); //eliminem botella del mar
-            // enviar a todos id de la botrella que ha dekiminar
+
+            // WE SEND THE ID OF THE PICKED BOTTLE TO ALL THE USERS,
+            // FOR THEM TO DELETE IT FROM THEIR LOCAL ARRAY OF BOTTLES (SO THEY WON'T PAINT IT IN THEIR LOCAL CANVAS)
+            deleteBottle_fromAllClients(id);
         }
     }
+
+    if (!found){
+        var msg = {
+            'msg_type': 'bottle_not_found',
+        };
+        client.send(JSON.stringify(msg));
+    }
+
 }
 
 
@@ -296,6 +310,17 @@ function throwBottletoWater(bottle) {
         'bottle_color': bottle.color
     };
     for (var i = 0; i<clients_socket.length; i++){
+        clients_socket[i].send(JSON.stringify(msg));
+    }
+}
+
+
+function deleteBottle_fromAllClients(id){
+    var msg = {
+        'msg_type': 'delete_bottle_from_printed',
+        'bottle_id' : id
+    };
+    for (var i = 0; i<clients_socket.length;i++){
         clients_socket[i].send(JSON.stringify(msg));
     }
 }
