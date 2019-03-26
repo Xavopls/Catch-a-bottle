@@ -59,7 +59,7 @@ function Client() {
                 break;
 
             case 'removed_bottle':
-                remove_bottle(data.bottle_id);
+                removeStoredBottle(data.bottle_id);
                 break;
 
             case 'delete_bottle_from_printed':
@@ -181,6 +181,14 @@ function Client() {
         for (var i = 0; i<this.client.canvas_bottles.length; i++){
             if (this.client.canvas_bottles[i].id === id){
                 this.client.canvas_bottles.splice(i, 1);
+            }
+        }
+    }
+
+    function removeStoredBottle(bottle_id) {
+        for (var i = 0; i<this.client.stored_bottles.length; i++){
+            if (bottle_id === this.client.stored_bottles[i]){
+                this.client.stored_bottles.slice(i,1);
             }
         }
     }
