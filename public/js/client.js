@@ -165,7 +165,35 @@ function Client() {
     function catched_bottle(bottle) {
         // STORE CAUGHT BOTTLE INTO MY ARRAY OF STORED BOTTLES
         this.client.stored_bottles.push(bottle);
-        window.alert(bottle.creator + ": " + bottle.msg);
+
+        var div1 = document.createElement("div");
+        div1.id="overlay";
+        div1.className="overlay";
+        var div2 = document.createElement("div");
+        div2.id="window";
+        div2.className="modal";
+        div2.innerHTML=bottle.creator+" say: "+ bottle.msg;
+
+
+        var keep = document.createElement("button");
+            button.innerHTML = 'Delete';
+            button.className = 'delete_button'
+
+
+
+
+            var login = document.querySelector("#login");
+            login.addEventListener("click", function () {
+                var nickname = document.querySelector("#nickname").value;
+                client.login(nickname);
+            });
+                
+
+        var general_box = document.querySelector("#game_page_container");
+        general_box.appendChild(div1);
+        general_box.appendChild(div2);
+    
+
     }
 
     function addCanvasBottle(data) {

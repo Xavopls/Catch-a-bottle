@@ -44,8 +44,8 @@ function showCanvas() {
     canvas.height = window.innerHeight;
 
 
-    var list = document.querySelector("#unfixed_width");
-    list.insertBefore(canvas, list.childNodes[0]);
+    var canvas_box = document.querySelector("#unfixed_width");
+    canvas_box.appendChild(canvas);
 
     client.canvas = canvas;
     client.context = this.client.canvas.getContext('2d');
