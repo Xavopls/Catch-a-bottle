@@ -250,22 +250,18 @@ function keepBottle(client, client_msg) {
 }
 
 function removeBottle(client, client_msg) {
-  
 
     for (var i = 0; i < clients.length; i++) { //busquem el client a la BBDD
-        if (clients[i].id == client_msg.client_id) {
+        if (clients[i].id === client_msg.client_id) {
             for (var j = 0; j < clients[i].personal_bottle_list.length; j++) {
                 if (clients[i].personal_bottle_list[j].id == client_msg.bottle_id) {
-                    
                     clients[i].personal_bottle_list.splice(j,1);
-
-                    console.log(clients[i].personal_bottle_list)
                 }
             }   
         }
     }
 
-    var msg = {//aixo sha denviar a tothom
+    var msg = {
         'msg_type': 'removed_bottle',
         'bottle_id': client_msg.bottle_id
     };

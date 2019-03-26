@@ -23,11 +23,14 @@ function getMousePos(c, evt) {
 
 
 function makeCircle(context, x, y, color) {
+
 	context.beginPath();
 	context.arc(x, y, client.diameter, 0, Math.PI * 2, true);
 	context.fillStyle = color;
 	context.fill();
 	context.closePath();
+
+
 };
 
 
