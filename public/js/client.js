@@ -167,32 +167,50 @@ function Client() {
         this.client.stored_bottles.push(bottle);
 
         var div1 = document.createElement("div");
-        div1.id="overlay";
-        div1.className="overlay";
+        div1.id = "overlay";
+        div1.className = "overlay";
         var div2 = document.createElement("div");
-        div2.id="window";
-        div2.className="modal";
-        div2.innerHTML=bottle.creator+" say: "+ bottle.msg;
+        div2.id = "window";
+        div2.className = "modal";
+        div2.innerHTML = bottle.creator + " say: " + bottle.msg;
 
+       
+
+
+        var discard = document.createElement("button");
+        discard.innerHTML = 'Discard bottle';
+        discard.className = 'discard'
+        discard.id = "discard"
 
         var keep = document.createElement("button");
-            button.innerHTML = 'Delete';
-            button.className = 'delete_button'
+        keep.innerHTML = 'Keep bottle';
+        keep.className = 'keep'
+        keep.id = "keep"
 
-
-
-
-            var login = document.querySelector("#login");
-            login.addEventListener("click", function () {
-                var nickname = document.querySelector("#nickname").value;
-                client.login(nickname);
-            });
-                
+        div2.appendChild(discard);
+        div2.appendChild(keep);
 
         var general_box = document.querySelector("#game_page_container");
         general_box.appendChild(div1);
         general_box.appendChild(div2);
+       
+
+        var discard_listener = document.querySelector("#discard");
+        discard_listener.addEventListener("click", function () {
     
+            var element = document.querySelector("#game_page_container");
+            var child1 = document.querySelector("#window");
+            var child2 = document.querySelector("#overlay");
+            element.removeChild(child1);
+            element.removeChild(child2);
+        });
+
+        var keep_bottle = document.querySelector("#keep");
+        keep_bottle.addEventListener("click", function () {
+           
+        });
+
+
 
     }
 
@@ -206,17 +224,17 @@ function Client() {
     }
 
     function deleteBottleFromPrinted(id) {
-        for (var i = 0; i<this.client.canvas_bottles.length; i++){
-            if (this.client.canvas_bottles[i].id === id){
+        for (var i = 0; i < this.client.canvas_bottles.length; i++) {
+            if (this.client.canvas_bottles[i].id === id) {
                 this.client.canvas_bottles.splice(i, 1);
             }
         }
     }
 
     function removeStoredBottle(bottle_id) {
-        for (var i = 0; i<this.client.stored_bottles.length; i++){
-            if (bottle_id === this.client.stored_bottles[i]){
-                this.client.stored_bottles.slice(i,1);
+        for (var i = 0; i < this.client.stored_bottles.length; i++) {
+            if (bottle_id === this.client.stored_bottles[i]) {
+                this.client.stored_bottles.slice(i, 1);
             }
         }
     }
