@@ -15,7 +15,7 @@ send.addEventListener("click", function () {
 	client.add_bottle(color, message);
 });
 
-const wrapper = document.querySelector("#left_column_game");
+const wrapper = document.querySelector("#fixed_width");
 wrapper.addEventListener("click", function (e) {
 	const isButton = event.target.nodeName === 'BUTTON';
 
@@ -29,7 +29,7 @@ wrapper.addEventListener("click", function (e) {
 			client.remove_bottle(id);
 			//borrar del html
 
-			var element = document.querySelector("#left_column_game");
+			var element = document.querySelector("#fixed_width");
 			var child = document.getElementById(id);
 			element.removeChild(child);
 

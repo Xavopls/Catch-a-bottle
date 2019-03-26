@@ -131,10 +131,7 @@ h1 {
 	width: 25%;
 }
 
-.column_canvas {
-	float: left;
-	width: 55%;
-}
+
 
 .column_players {
 	float: left;
@@ -147,12 +144,7 @@ h1 {
 	clear: both;
 }
 
-#canvas_image {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
-}
+
 
 #player_list {
 	text-align: center;
@@ -207,13 +199,6 @@ h1 {
 	opacity: 0.3;
 }
 
-#createroom {
-	margin-top: 5%;
-	margin-bottom: 13%;
-	color: black;
-	text-align: center;
-}
-
 #nick_input {
 	margin-top: 6%;
 }
@@ -243,21 +228,29 @@ h1 {
 	margin-right: 20%;
 }
 
-#right_column_chat {
-	padding-right: 2%;
-	padding-left: 1%;
 
+
+#fixed_width {
+	width: 350px;
+	padding: 0px;
+	float: left;
+	background-color: #f00;
 }
 
-#left_column_game {
-	margin-top: 5%;
+#fixed_width_right {
+	width: 350px;
+	padding: 0px;
+	float: right;
+	background-color: #f00;
 }
 
-#mid_column_game {
-	padding-left: 5%;
-	padding-top: 11%;
-	height: 100%;
+#unfixed_width {
+	padding: 0px;
+	margin-left: 350px;
+	margin-right: 350px;
+	background-color: #090;
 }
+
 
 #roomname_label {
 	display: block;
@@ -777,14 +770,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-canvas {
 
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	z-index: 3;
-}
 
 h1 {
 	font-family: 'Pinyon Script', cursive;

@@ -26,26 +26,19 @@
 
     <!--######################################  SEA PAGE  ######################################-->
     <div id="game_page_container" class="row">
-   
-
-        <div id="left_column_game" class="column_players">
 
 
-        </div>
-<button id="myBottlesButton">MY BOTTLES</button>
-        <div id="mid_column_game" class="column_canvas">
-            <div id="3d_canvas">
 
+            <div id="container">
+                    <div id="fixed_width"></div>
+                    <div id="fixed_width_right">
+                            <button id="myBottlesButton">MY BOTTLES</button>
+                            <input name="p" required="required" id="message" placeholder="message" />
+                            <input name="p" required="required" id="color" placeholder="color" />
+                            <button type="submit" class="btn btn-primary btn-block btn-large" id="send"><b>New bottle</b></button>
+                    </div>
+                    <div id="unfixed_width"></div>
             </div>
-        </div>
-
-        <div id="right_column_game" class="column_chat">
-
-            <input name="p" required="required" id="message" placeholder="message" />
-            <input name="p" required="required" id="color" placeholder="color" />
-            <button type="submit" class="btn btn-primary btn-block btn-large" id="send"><b>New bottle</b></button>
-
-        </div>
     </div>
 
     <script src="js/client.js"></script>

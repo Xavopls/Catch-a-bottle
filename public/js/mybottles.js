@@ -23,7 +23,7 @@ function showMyBottles(list_bottles) {
             element.appendChild(msg);
             element.appendChild(button);
 
-            document.querySelector("#left_column_game").appendChild(element);
+            document.querySelector("#fixed_width").appendChild(element);
         }
     } else {
         alert("You have no bottles! Hurry up and catch one!");
@@ -40,14 +40,14 @@ function showCanvas() {
 
     var canvas = document.createElement("canvas");
     canvas.id = "canvas";
-    canvas.width = window.innerWidth;
+    canvas.width = window.innerWidth-(350*2);
     canvas.height = window.innerHeight;
 
 
-    var list = document.querySelector("#game_page_container");
+    var list = document.querySelector("#unfixed_width");
     list.insertBefore(canvas, list.childNodes[0]);
 
-    client.canvas = document.querySelector("#canvas");
+    client.canvas = canvas;
     client.context = this.client.canvas.getContext('2d');
 
 
@@ -65,6 +65,7 @@ function showCanvas() {
                 id = element.id;
 
                 //aqui hem de demanari al server el creador i el msg de la botella segons id
+
                 client.search_bottle(id);
 
             }
