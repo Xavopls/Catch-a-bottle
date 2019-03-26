@@ -8,12 +8,6 @@ login.addEventListener("click", function () {
 	client.login(nickname);
 });
 
-var send = document.querySelector("#send");
-send.addEventListener("click", function () {
-	var message = document.querySelector("#message").value;
-	var color = document.querySelector("#color").value;
-	client.add_bottle(color, message);
-});
 
 const wrapper = document.querySelector("#fixed_width");
 wrapper.addEventListener("click", function (e) {

@@ -4,6 +4,12 @@
 var MyBottles_buton = document.querySelector("#myBottlesButton");
 MyBottles_buton.addEventListener("click", showMyBottles);
 
+var send = document.querySelector("#send");
+send.addEventListener("click", function () {
+	var message = document.querySelector("#message").value;
+	var color = document.querySelector("#color").value;
+	client.add_bottle(color, message);
+});
 
 
 function getMousePos(c, evt) {
@@ -32,9 +38,16 @@ function drawFrame() {
 
 	context.clearRect(0, 0, canvas.width, canvas.height);
 
-
 	for (var circle of client.canvas_bottles) {
-		makeCircle(context, circle.x, circle.y, circle.color);
+		var found = false;
+		for (var i = 0; i<client.thrown_bottles_ids.length;i++){
+			if (client.thrown_bottles_ids[i] === circle.id){
+				found = true;
+			}
+		}
+		if (!found){
+			makeCircle(context, circle.x, circle.y, circle.color);
+		}
 	}
 
 	requestAnimationFrame(drawFrame);

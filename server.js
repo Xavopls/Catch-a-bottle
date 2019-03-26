@@ -290,7 +290,7 @@ function newBottle(client, client_msg) {
         throwBottletoWater(new_bottle);
 
         var msg = {
-            'msg_type': 'newBottle_added',
+            'msg_type': 'new_bottle_added_response',
             'bottle': new_bottle
         };
         console.log('Nueva botella añadida');

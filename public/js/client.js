@@ -14,7 +14,7 @@ function Client() {
     this.id = "";
     this.stored_bottles = [];
     this.canvas_bottles = [];
-    this.sent_bottles_ids = [];
+    this.thrown_bottles_ids = [];
     this.canvas;
     this.context;
     this.diameter = 20;
@@ -50,8 +50,8 @@ function Client() {
                 catched_bottle(data.bottle);
                 break;
 
-            case 'newBottle_added':
-                add_new_bottle(data.bottle);
+            case 'new_bottle_added_response':
+                this.thrown_bottles_ids.push(data.bottle.id);
                 break;
 
             case 'newBottle_await':
@@ -67,7 +67,7 @@ function Client() {
                 break;
 
             case 'update_new_bottle':
-                add_new_bottle(data);
+                addCanvasBottle(data);
                 break;
 
             case 'bottle_not_found':
@@ -78,7 +78,7 @@ function Client() {
                 window.alert('You can not get another bottle for ' + (60.0 - (data.time / 1000)) + ' seconds!')
                 break;
         }
-        
+
     };
 
     this.login = (nickname, callback_fn) => {
@@ -168,14 +168,13 @@ function Client() {
         window.alert(bottle.creator + ": " + bottle.msg);
     }
 
-    function add_new_bottle(data) {
+    function addCanvasBottle(data) {
         var new_bottle = new Bottle();
         new_bottle.x = Math.floor((Math.random() * (canvas.width - (this.client.diameter / 2))) + (this.client.diameter / 2));
         new_bottle.y = Math.floor((Math.random() * (canvas.height - (this.client.diameter / 2))) + (this.client.diameter / 2));
         new_bottle.id = data.bottle_id;
         new_bottle.color = data.bottle_color;
-        canvas_bottles.push(new_bottle);
-        this.client.canvas_bottles = data.bottle_list;
+        this.client.canvas_bottles.push(new_bottle);
     }
 
     function deleteBottleFromPrinted(id) {
