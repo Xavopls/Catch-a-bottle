@@ -205,11 +205,20 @@ function Client() {
             element.removeChild(child2);
         });
 
+        /*
         var keep_bottle = document.querySelector("#keep");
         keep_bottle.addEventListener("click", function () {
+
+            this.client.keep_bottle(bottle);
+            this.client.stored_bottles.push(bottle);
+            var element = document.querySelector("#game_page_container");
+            var child1 = document.querySelector("#window");
+            var child2 = document.querySelector("#overlay");
+            element.removeChild(child1);
+            element.removeChild(child2);
            
         });
-
+*/
 
 
     }
