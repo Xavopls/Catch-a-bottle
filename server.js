@@ -10,9 +10,9 @@ var bottle_count = 5;
 
 
 
-var names= ["daniel", "xavi","agenjo","roger","estefania"];
+var names= ["Lao Tsé", "Mahatma Gandhi","John Lennon","Charles Baudelaire","Jacinto Benavente","Bob Marley","Confucio","Albert Einstein","Albert Einstein","San Agustín","Casanova","Albert Einstein","Bob Marley","Antonio Machado","Platón","Lao Tsé","Giovanni Boccaccio","Abraham Lincoln","Mahatma Gandhi","Marilyn Monroe"];
 var colors= ["WHITE", "SILVER","GRAY","BLACK","RED","MAROON","YELLOW","OLIVE","LIME","GREEN","AQUA","TEAL","NAVY","FUCHSIA","PURPLE"];
-var mensakas=["Soy un reddcoin owner","Adeua 50 pavis","Tu aplicacion es una mierda","Juego a basket","Viva maduro"];
+var mensakas=["No hay que ir para atrás ni para darse impulso"," No hay caminos para la paz; la paz es el camino","Haz el amor y no la guerra","Para trabajar basta estar convencido de una cosa: que trabajar es menos aburrido que divertirse","Lo peor que hacen los malos es obligarnos a dudar de los buenos","Las guerras seguirán mientras el color de la piel siga siendo más importante que el de los ojos","Aprende a vivir y sabrás morir bien","Cada día sabemos más y entendemos menos","El mundo no está en peligro por las malas personas sino por aquellas que permiten la maldad","La medida del amor es amar sin medida","No hay nada que un hombre no sea capaz de hacer cuando una mujer le mira","Dar el ejemplo no es la principal manera de influir sobre los demás; es la única manera","El dinero no puede comprar la vida","Si es bueno vivir, todavía es mejor soñar, y lo mejor de todo, despertar","La mayor declaración de amor es la que no se hace; el hombre que siente mucho, habla poco","Si das pescado a un hombre hambriento lo nutres durante una jornada. Si le enseñas a pescar, le nutrirás toda su vida","Vale más actuar exponiéndose a arrepentirse de ello, que arrepentirse de no haber hecho nada","Ningún hombre es lo bastante bueno para gobernar a otros sin su consentimiento","Todo lo que se come sin necesidad se roba al estómago de los pobres","Vivir sola es como estar en una fiesta donde nadie te hace caso"];
 
 for (var i = 1; i <= names.length; i++) {
     var bottle = new Bottle();
@@ -38,7 +38,7 @@ bottle3.id = 3;
 bottle3.creator = 'agenjo';
 bottle3.color = 'black';
 bottle3.msg = 'Tu aplicacion es una mierda'
-bottle_list.push(bottle3);
+
 
 var bottle4 = new Bottle();
 bottle4.id = 4;
