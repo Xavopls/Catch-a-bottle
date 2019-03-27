@@ -174,7 +174,11 @@ function Client() {
         div2.className = "modal";
         div2.innerHTML = bottle.creator + " say: " + bottle.msg;
 
-       
+        var creator = document.createElement("p");
+        creator.innerHTML= bottle.creator+":";
+        var msg=document.createElement("p");
+        msg.innerHTML="\""+bottle.msg+"\"";
+
 
 
         var discard = document.createElement("button");
@@ -187,6 +191,8 @@ function Client() {
         keep.className = 'keep';
         keep.id = "keep";
 
+        div2.appendChild(creator);
+        div2.appendChild(msg);
         div2.appendChild(discard);
         div2.appendChild(keep);
 
