@@ -8,19 +8,30 @@ function Bottle() {
 var bottle_list = []
 var bottle_count = 5;
 
-var bottle = new Bottle();
-bottle.id = 1;
-bottle.creator = 'daniel';
-bottle.color = 'red';
-bottle.msg = 'Soy un reddcoin owner'
-bottle_list.push(bottle);
+
+
+var names= ["daniel", "xavi","agenjo","roger","estefania"];
+var colors= ["WHITE", "SILVER","GRAY","BLACK","RED","MAROON","YELLOW","OLIVE","LIME","GREEN","AQUA","TEAL","NAVY","FUCHSIA","PURPLE"];
+var mensakas=["Soy un reddcoin owner","Adeua 50 pavis","Tu aplicacion es una mierda","Juego a basket","Viva maduro"];
+
+for (var i = 1; i <= names.length; i++) {
+    var bottle = new Bottle();
+    bottle.id=i;
+    bottle.color=colors[Math.floor(Math.random() * colors.length)];
+    bottle.creator=names[i-1]
+    bottle.msg=mensakas[i-1]
+    bottle_list.push(bottle);
+}
+
+
+
 
 var bottle2 = new Bottle();
 bottle2.id = 2;
 bottle2.creator = 'xavi';
 bottle2.color = 'blue';
 bottle2.msg = 'Adeua 50 pavis'
-bottle_list.push(bottle2);
+
 
 var bottle3 = new Bottle();
 bottle3.id = 3;
@@ -34,14 +45,16 @@ bottle4.id = 4;
 bottle4.creator = 'roger';
 bottle4.color = 'orange';
 bottle4.msg = 'Juego a basket'
-bottle_list.push(bottle4);
+
 
 var bottle5 = new Bottle();
 bottle5.id = 5;
 bottle5.creator = 'estefania';
 bottle5.color = 'black';
 bottle5.msg = 'Viva maduro'
-bottle_list.push(bottle5);
+
+
+
 
 function Client() {
     this.nickname = '';
@@ -65,8 +78,6 @@ clients.push(client);
 
 var client2 = new Client();
 client2.nickname = 'xavi';
-client2.id = 2;
-client2.personal_bottle_list.push(bottle);
 client2.personal_bottle_list.push(bottle3);
 client2.personal_bottle_list.push(bottle5);
 clients.push(client2);
@@ -80,7 +91,6 @@ clients.push(client3);
 var client4 = new Client();
 client4.nickname = 'roger';
 client4.id = 4;
-client4.personal_bottle_list.push(bottle);
 client4.personal_bottle_list.push(bottle2);
 clients.push(client4);
 

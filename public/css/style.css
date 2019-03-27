@@ -269,6 +269,7 @@ h1 {
 #recived_message{
 	font-weight: bold;
 	font-size: 40px;
+	text-transform: capitalize;
 }
 
 .discard{
