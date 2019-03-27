@@ -273,13 +273,10 @@ function removeBottle(client, client_msg) {
     console.log('Removing bottle with ID: ', client_msg.bottle_id);
     for (var i = 0; i < clients.length; i++) { //busquem el client a la BBDD
         if (clients[i].id === client_msg.client_id) {
-            console.log('CLIENT FOUND')
             for (var j = 0; j < clients[i].personal_bottle_list.length; j++) {
-                console.log('ID RECEIVED: ',client_msg.bottle_id );
-                console.log('ID RECURSIVE: ', clients[i].personal_bottle_list[j].id);
                 if (clients[i].personal_bottle_list[j].id == client_msg.bottle_id) {
-                    console.log('Succesfully removed');
                     clients[i].personal_bottle_list.splice(j,1);
+                    console.log('Succesfully removed');
                 }
             }   
         }

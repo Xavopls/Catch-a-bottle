@@ -59,6 +59,7 @@ function Client() {
                 break;
 
             case 'removed_bottle':
+                console.log('ASAAAAAAAAAAAAAA')
                 removeStoredBottle(data.bottle_id);
                 break;
 
@@ -241,7 +242,7 @@ function Client() {
 
     function removeStoredBottle(bottle_id) {
         for (var i = 0; i < this.client.stored_bottles.length; i++) {
-            if (bottle_id === this.client.stored_bottles[i].id) {
+            if (bottle_id == this.client.stored_bottles[i].id) {
                 this.client.stored_bottles.splice(i, 1);
             }
         }
