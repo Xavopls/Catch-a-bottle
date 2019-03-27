@@ -58,7 +58,6 @@ function showCanvas() {
         var x = e.pageX - client.canvas.offsetLeft;
         var y = e.pageY - client.canvas.offsetTop;
         var id;
-        console.log("entra");
         
         client.canvas_bottles.forEach(function (element) {
             if (Math.pow(x - element.x, 2) + Math.pow(y - element.y, 2) < Math.pow(client.diameter, 2)) {

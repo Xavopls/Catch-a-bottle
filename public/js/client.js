@@ -30,7 +30,6 @@ function Client() {
 
 
     this.onResponse = (resp) => {
-        console.log('resp ', resp);
     };
 
 
@@ -59,7 +58,6 @@ function Client() {
                 break;
 
             case 'removed_bottle':
-                console.log('ASAAAAAAAAAAAAAA')
                 removeStoredBottle(data.bottle_id);
                 break;
 
@@ -101,16 +99,6 @@ function Client() {
         this.ws.send(JSON.stringify(message));
         this.onResponse = callback_fn
     };
-
-    // this.keep_bottle = (bottle, callback_fn) => {
-    //     var message = {
-    //         'msg_type': 'keep_bottle',
-    //         'nickname': this.nickname,
-    //         'bottle': bottle
-    //     };
-    //     this.ws.send(JSON.stringify(message));
-    //     this.onResponse = callback_fn
-    // };
 
     this.add_bottle = (color, message, callback_fn) => {
         var message = {
@@ -179,7 +167,7 @@ function Client() {
         creator.id="creator";
         var msg=document.createElement("p");
         msg.innerHTML="\""+bottle.msg+"\"";
-        msg.id="recived_message";
+        msg.id="received_message";
 
 
 
@@ -216,11 +204,36 @@ function Client() {
             var child2 = document.querySelector("#overlay");
             element.removeChild(child1);
             element.removeChild(child2);
+
+            //IF STORED BOTTLE LIST IS DEPLOYED, IT IS ADDED AT THE BOTTOM
+            if ( document.querySelector("#fixed_width").hasChildNodes() ){
+                creator = document.createElement("p");
+                creator.innerHTML = bottle.creator;
+
+                var color = document.createElement("p");
+                color.innerHTML = bottle.color;
+
+                var msg = document.createElement("p");
+                msg.innerHTML = bottle.msg;
+
+                var button = document.createElement("button");
+                button.innerHTML = 'Delete';
+                button.className = 'delete_button';
+                button.id = bottle.id;
+
+                var element = document.createElement("div");
+                element.id = bottle.id;
+                element.className="message_wrapper";
+                element.appendChild(creator);
+                //element.appendChild(color);
+                element.appendChild(msg);
+                element.appendChild(button);
+
+                document.querySelector("#fixed_width").appendChild(element);
+            }
+
            
         });
-
-
-
     }
 
     function addCanvasBottle(data) {

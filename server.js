@@ -222,7 +222,6 @@ function storeBottle(client, client_msg) {
                 // STORE BOTTLE IN CLIENT STORED BOTTLE LIST
                 for (var j = 0; j<clients.length; j++){
                     if (clients[j].nickname === client_msg.nickname){
-                        console.log('STORE BOTTLE IN CLIENT STORED BOTTLE LIST');
                         clients[j].personal_bottle_list.push(bottle_list[i]);
                     }
                 }
