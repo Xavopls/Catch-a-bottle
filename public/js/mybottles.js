@@ -1,7 +1,7 @@
 function showMyBottles(list_bottles) {
 
     if (client.stored_bottles.length > 0) {
-        for (var i = 0; i < client.stored_bottles.length; i++) { //busquem el client a la BBDD
+        for (var i = 0; i < client.stored_bottles.length; i++) {
             var creator = document.createElement("p");
             creator.innerHTML = client.stored_bottles[i].creator;
 
@@ -57,19 +57,13 @@ function showCanvas() {
         var x = e.pageX - client.canvas.offsetLeft;
         var y = e.pageY - client.canvas.offsetTop;
         var id;
-        console.log("entra")
+        console.log("entra");
         
         client.canvas_bottles.forEach(function (element) {
             if (Math.pow(x - element.x, 2) + Math.pow(y - element.y, 2) < Math.pow(client.diameter, 2)) {
-                
                 id = element.id;
-
-                //aqui hem de demanari al server el creador i el msg de la botella segons id
-
-                client.search_bottle(id);
-
+                client.store_bottle(id);
             }
-
         });
     });
 

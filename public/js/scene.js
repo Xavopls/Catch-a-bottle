@@ -4,6 +4,10 @@
 var MyBottles_buton = document.querySelector("#myBottlesButton");
 MyBottles_buton.addEventListener("click", showMyBottles);
 
+
+
+
+
 var send = document.querySelector("#send");
 send.addEventListener("click", function () {
 	var message = document.querySelector("#message").value;

@@ -46,8 +46,8 @@ function Client() {
                 initialize(data);
                 break;
 
-            case 'catched_bottle':
-                catched_bottle(data.bottle);
+            case 'caught_bottle':
+                caught_bottle(data.bottle);
                 break;
 
             case 'new_bottle_added_response':
@@ -74,7 +74,7 @@ function Client() {
                 window.alert('Somebody has picked the bottle before you! Be faster next time :)')
                 break;
 
-            case 'catched_bottle_timeout':
+            case 'caught_bottle_timeout':
                 window.alert('You can not get another bottle for ' + (60.0 - (data.time / 1000)) + ' seconds!')
                 break;
         }
@@ -91,9 +91,9 @@ function Client() {
     };
 
 
-    this.search_bottle = (bottle_id, callback_fn) => {
+        this.store_bottle = (bottle_id, callback_fn) => {
         var message = {
-            'msg_type': 'search_bottle',
+            'msg_type': 'store_bottle',
             'nickname': this.nickname,
             'bottle_id': bottle_id
         };
@@ -101,15 +101,15 @@ function Client() {
         this.onResponse = callback_fn
     };
 
-    this.keep_bottle = (bottle, callback_fn) => {
-        var message = {
-            'msg_type': 'keep_bottle',
-            'nickname': this.nickname,
-            'bottle': bottle
-        };
-        this.ws.send(JSON.stringify(message));
-        this.onResponse = callback_fn
-    };
+    // this.keep_bottle = (bottle, callback_fn) => {
+    //     var message = {
+    //         'msg_type': 'keep_bottle',
+    //         'nickname': this.nickname,
+    //         'bottle': bottle
+    //     };
+    //     this.ws.send(JSON.stringify(message));
+    //     this.onResponse = callback_fn
+    // };
 
     this.add_bottle = (color, message, callback_fn) => {
         var message = {
@@ -162,7 +162,7 @@ function Client() {
 
     }
 
-    function catched_bottle(bottle) {
+    function caught_bottle(bottle) {
         // STORE CAUGHT BOTTLE INTO MY ARRAY OF STORED BOTTLES
         this.client.stored_bottles.push(bottle);
 
@@ -179,13 +179,13 @@ function Client() {
 
         var discard = document.createElement("button");
         discard.innerHTML = 'Discard bottle';
-        discard.className = 'discard'
-        discard.id = "discard"
+        discard.className = 'discard';
+        discard.id = "discard";
 
         var keep = document.createElement("button");
         keep.innerHTML = 'Keep bottle';
-        keep.className = 'keep'
-        keep.id = "keep"
+        keep.className = 'keep';
+        keep.id = "keep";
 
         div2.appendChild(discard);
         div2.appendChild(keep);
@@ -194,23 +194,15 @@ function Client() {
         general_box.appendChild(div1);
         general_box.appendChild(div2);
        
-
         var discard_listener = document.querySelector("#discard");
         discard_listener.addEventListener("click", function () {
-    
-            var element = document.querySelector("#game_page_container");
-            var child1 = document.querySelector("#window");
-            var child2 = document.querySelector("#overlay");
-            element.removeChild(child1);
-            element.removeChild(child2);
+            discardSelection(bottle.id);
         });
 
-        /*
+
         var keep_bottle = document.querySelector("#keep");
         keep_bottle.addEventListener("click", function () {
 
-            this.client.keep_bottle(bottle);
-            this.client.stored_bottles.push(bottle);
             var element = document.querySelector("#game_page_container");
             var child1 = document.querySelector("#window");
             var child2 = document.querySelector("#overlay");
@@ -218,7 +210,7 @@ function Client() {
             element.removeChild(child2);
            
         });
-*/
+
 
 
     }
@@ -242,9 +234,19 @@ function Client() {
 
     function removeStoredBottle(bottle_id) {
         for (var i = 0; i < this.client.stored_bottles.length; i++) {
-            if (bottle_id === this.client.stored_bottles[i]) {
-                this.client.stored_bottles.slice(i, 1);
+            if (bottle_id === this.client.stored_bottles[i].id) {
+                this.client.stored_bottles.splice(i, 1);
             }
         }
+    }
+
+
+    function discardSelection(bottle_id) {
+        this.client.remove_bottle(bottle_id);
+        var element = document.querySelector("#game_page_container");
+        var child1 = document.querySelector("#window");
+        var child2 = document.querySelector("#overlay");
+        element.removeChild(child1);
+        element.removeChild(child2);
     }
 }
