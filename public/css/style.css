@@ -232,28 +232,9 @@ h1 {
 
 
 
-#fixed_width {
-	width: 350px;
-	padding: 0px;
-	float: left;
-	background-color: #f00;
-}
-
-#fixed_width_right {
-	width: 350px;
-	padding: 0px;
-	float: right;
-	background-color: #f00;
-}
-
-#unfixed_width {
-	padding: 0px;
-	margin-left: 350px;
-	margin-right: 350px;
-	background-color: #090;
-}
 
 
+/*Pop up*/
 .overlay {
     position: absolute;
     top: 0;
@@ -264,21 +245,126 @@ h1 {
     z-index: 10;
 }
 
-.modal {
-    width: 300px;
-    height: 200px;
-    line-height: 200px;
+.modal{
+	width: 800px;
+    height: 500px;
     position: fixed;
-    top: 50%; 
+    top: 50%;
     left: 50%;
-    margin-top: -100px;
-    margin-left: -150px;
-    background-color: #f1c40f;
-    border-radius: 5px;
+    margin-top: -250px;
+    margin-left: -400px;
+    background-color: #fdfdfdc9;
+    border-radius: 15px;
+    z-index: 11;
     text-align: center;
-	z-index: 11; /* 1px higher than the overlay layer */
+    padding-top: 70px;
 }
 
+#creator {
+	font-size: 25px;
+	font-style: italic;
+	text-transform: capitalize;
+}
+
+#recived_message{
+	font-weight: bold;
+	font-size: 40px;
+}
+
+.discard{
+	margin-right: 70px;
+	margin-top: 90px;
+	
+	background-color: #f11419;
+	border: 1px solid #f11419;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: white;
+	padding: 9px 14px;
+    font-size: 15px;
+	border-radius: 5px;
+}
+
+.keep{
+	background-color: #2196F3;
+	border: 1px solid #2196F3;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: white;
+	padding: 9px 14px;
+    font-size: 15px;
+	border-radius: 5px;
+}
+
+/*Mid content*/
+#unfixed_width {
+	padding: 0px;
+	margin-left: 350px;
+	margin-right: 350px;
+	/*background-color: #090;*/
+}
+
+/*Right content*/
+#fixed_width_right {
+	width: 350px;
+	padding: 0px;
+	float: right;
+	/*background-color: #f00;*/
+}
+
+#wrapper_right_content{
+	padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 50px;
+}
+
+
+#send{
+	background-color: #2196F3;
+	border: 1px solid #2196F3;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: white;
+	padding: 9px 14px;
+    font-size: 15px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	width: 100%;
+
+}
+
+#myBottlesButton{
+	background-color: #f3bc21;
+	border: 1px solid #f3bc21;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: #000000;
+	padding: 9px 14px;
+    font-size: 15px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+/*Left content*/
+#fixed_width {
+	width: 350px;
+	padding: 0px;
+	float: left;
+	/*background-color: #f00;*/
+}
+
+.message_wrapper{
+	margin-top: 20px;
+	margin-left: 20px;
+	
+    background-color: #fdfdfdc9;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 
 

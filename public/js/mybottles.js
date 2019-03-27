@@ -18,8 +18,9 @@ function showMyBottles(list_bottles) {
 
             var element = document.createElement("div");
             element.id = client.stored_bottles[i].id;
+            element.className="message_wrapper";
             element.appendChild(creator);
-            element.appendChild(color);
+            //element.appendChild(color);
             element.appendChild(msg);
             element.appendChild(button);
 

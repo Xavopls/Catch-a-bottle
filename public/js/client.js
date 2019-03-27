@@ -151,8 +151,8 @@ function Client() {
 
         for (var i = 0; i < this.client.canvas_bottles.length; i++) {
 
-            var x = Math.floor((Math.random() * (canvas.width - (this.client.diameter / 2))) + (this.client.diameter / 2));
-            var y = Math.floor((Math.random() * (canvas.height - (this.client.diameter / 2))) + (this.client.diameter / 2));
+            var x = Math.floor(Math.random() * (canvas.width - 100)) + 100;
+            var y = Math.floor(Math.random() * (canvas.height -100)) + 100;
 
             this.client.canvas_bottles[i].x = x;
             this.client.canvas_bottles[i].y = y;
@@ -172,12 +172,13 @@ function Client() {
         var div2 = document.createElement("div");
         div2.id = "window";
         div2.className = "modal";
-        div2.innerHTML = bottle.creator + " say: " + bottle.msg;
 
         var creator = document.createElement("p");
-        creator.innerHTML= bottle.creator+":";
+        creator.innerHTML= "— "+bottle.creator+" —";
+        creator.id="creator";
         var msg=document.createElement("p");
         msg.innerHTML="\""+bottle.msg+"\"";
+        msg.id="recived_message";
 
 
 
@@ -190,9 +191,9 @@ function Client() {
         keep.innerHTML = 'Keep bottle';
         keep.className = 'keep';
         keep.id = "keep";
-
-        div2.appendChild(creator);
+        
         div2.appendChild(msg);
+        div2.appendChild(creator);
         div2.appendChild(discard);
         div2.appendChild(keep);
 
@@ -223,8 +224,8 @@ function Client() {
 
     function addCanvasBottle(data) {
         var new_bottle = new Bottle();
-        new_bottle.x = Math.floor((Math.random() * (canvas.width - (this.client.diameter / 2))) + (this.client.diameter / 2));
-        new_bottle.y = Math.floor((Math.random() * (canvas.height - (this.client.diameter / 2))) + (this.client.diameter / 2));
+        new_bottle.x = Math.floor((Math.random() * (canvas.width - 100)) + 100);
+        new_bottle.y = Math.floor((Math.random() * (canvas.height - 100)) + 100);
         new_bottle.id = data.bottle_id;
         new_bottle.color = data.bottle_color;
         this.client.canvas_bottles.push(new_bottle);
