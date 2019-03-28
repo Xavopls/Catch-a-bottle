@@ -172,7 +172,7 @@ function Client() {
         div2.appendChild(discard);
         div2.appendChild(keep);
 
-        var general_box = document.querySelector("#game_page_container");
+        var general_box = document.querySelector("#seaPageContainer");
         general_box.appendChild(div1);
         general_box.appendChild(div2);
 
@@ -185,7 +185,7 @@ function Client() {
         var keep_bottle = document.querySelector("#keepButton");
         keep_bottle.addEventListener("click", function () {
 
-            var wrapper = document.querySelector("#game_page_container");
+            var wrapper = document.querySelector("#seaPageContainer");
             var child1 = document.querySelector("#window");
             var child2 = document.querySelector("#overlay");
             wrapper.removeChild(child1);

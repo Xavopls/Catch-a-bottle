@@ -90,7 +90,7 @@ function dialogBox(message) {
     div2.appendChild(msg);
     div2.appendChild(ok);
 
-    var wrapper = document.querySelector("#game_page_container");
+    var wrapper = document.querySelector("#seaPageContainer");
     wrapper.appendChild(div1);
     wrapper.appendChild(div2);
 
