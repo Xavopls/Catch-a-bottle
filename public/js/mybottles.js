@@ -36,7 +36,7 @@ function showCanvas() {
 
 
     var body = document.querySelector("body");
-    var video = document.querySelector("#myVideo");
+    var video = document.querySelector("#backgroundVideo");
     body.removeChild(video);
 
     var canvas = document.createElement("canvas");
@@ -75,7 +75,7 @@ function dialogBox(message) {
 
     var div2 = document.createElement("div");
     div2.id = "dialogBox";
-    div2.className = "dialogBox";
+    div2.className = "modal";
 
 
     var msg = document.createElement("p");

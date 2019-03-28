@@ -120,7 +120,7 @@ function Client() {
         this.client.stored_bottles = data.stored_bottles;
         this.client.canvas_bottles = data.bottle_list;
 
-        document.querySelector("#login_page_container").style.display = "none";
+        document.querySelector("#loginPageContainer").style.display = "none";
         document.querySelector("#game_page_container").style.display = "inline";
 
         showCanvas();
@@ -159,13 +159,13 @@ function Client() {
 
         var discard = document.createElement("button");
         discard.innerHTML = 'Discard bottle';
-        discard.className = 'discard';
-        discard.id = "discard";
+        discard.className = 'btn';
+        discard.id = "discardButton";
 
         var keep = document.createElement("button");
         keep.innerHTML = 'Keep bottle';
-        keep.className = 'keep';
-        keep.id = "keep";
+        keep.className = 'btn';
+        keep.id = "keepButton";
 
         div2.appendChild(msg);
         div2.appendChild(creator);
@@ -176,13 +176,13 @@ function Client() {
         general_box.appendChild(div1);
         general_box.appendChild(div2);
 
-        var discard_listener = document.querySelector("#discard");
+        var discard_listener = document.querySelector("#discardButton");
         discard_listener.addEventListener("click", function () {
             discardSelection(bottle.id);
         });
 
 
-        var keep_bottle = document.querySelector("#keep");
+        var keep_bottle = document.querySelector("#keepButton");
         keep_bottle.addEventListener("click", function () {
 
             var wrapper = document.querySelector("#game_page_container");
