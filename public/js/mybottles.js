@@ -13,7 +13,7 @@ function showMyBottles(list_bottles) {
 
             var button = document.createElement("button");
             button.innerHTML = 'Delete';
-            button.className = 'delete_button btn';
+            button.className = 'btn deleteButton';
             button.id = client.stored_bottles[i].id;
 
             var element = document.createElement("div");

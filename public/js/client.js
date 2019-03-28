@@ -204,7 +204,7 @@ function Client() {
 
                 var button = document.createElement("button");
                 button.innerHTML = 'Delete';
-                button.className = 'delete_button';
+                button.className = 'btn deleteButton';
                 button.id = bottle.id;
 
                 var element = document.createElement("div");
