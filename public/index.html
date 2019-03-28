@@ -8,6 +8,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link id="favicon" rel="shortcut icon" type="image/png" href="assets/img/favicon.png" />
     <link href="https://fonts.googleapis.com/css?family=Pinyon+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
 <body>
@@ -30,18 +31,25 @@
             <div id="fixed_width"></div>
             <div id="fixed_width_right">
                 <div id="wrapper_right_content">
-                    
+                    <h2 id="bottle_message">Bottle Message</h2>
                     <input required="required" id="message" placeholder="Type some deep poetry..." />
+                    <div id="color_selector_container">
+                        <div class="column">
+                            <h2 id="color_label">Select a color: </h2>
+                        </div>
+                        <div class="column">
+                            <select id="colorsList">
+                                <option id="f4f4f4" class="colorButton white_button">-------------</option>
+                                <option id="F44336" class="colorButton red_button">-------------</option>
+                                <option id="FFC108" class="colorButton yellow_button">-------------</option>
+                                <option id="009588" class="colorButton turqoise_button">-------------</option>
+                                <option id="661466" class="colorButton purple_button">-------------</option>
+                            </select>
+                        </div>
 
-                    <input required="required" id="message" placeholder="message" />
 
-                    <select id="colorsList">
-                        <option id="f4f4f4" class="colorButton white_button">White horse</option>
-                        <option id="F44336" class="colorButton red_button">Red hot chili peppers</option>
-                        <option id="FFC108" class="colorButton yellow_button">Yellow submarine</option>
-                        <option id="009588" class="colorButton turqoise_button">Green valley</option>
-                        <option id="661466" class="colorButton purple_button">Purple rain</option>
-                    </select>
+                    </div>
+
 
 
                     <button id="sendMessageButton" class="btn"><b>Throw bottle to water</b></button>
