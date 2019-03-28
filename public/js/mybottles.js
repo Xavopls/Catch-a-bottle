@@ -1,35 +1,48 @@
+
+var shown_bottles = false;
 function showMyBottles() {
 
-    if (client.stored_bottles.length > 0) {
-        if (!document.querySelector("#fixed_width").hasChildNodes()) {
-            for (var i = 0; i < client.stored_bottles.length; i++) {
-                var creator = document.createElement("p");
-                creator.innerHTML = client.stored_bottles[i].creator;
-                creator.className = "keptCreator"
+    if (!shown_bottles) {
+        if (client.stored_bottles.length > 0) {
+            if (!document.querySelector("#fixed_width").hasChildNodes()) {
+                for (var i = 0; i < client.stored_bottles.length; i++) {
+                    var creator = document.createElement("p");
+                    creator.innerHTML = client.stored_bottles[i].creator;
+                    creator.className = "keptCreator"
 
-                var msg = document.createElement("p");
-                msg.innerHTML = "— " + client.stored_bottles[i].msg + " —";
-                msg.className = "keptMessage"
+                    var msg = document.createElement("p");
+                    msg.innerHTML = "— " + client.stored_bottles[i].msg + " —";
+                    msg.className = "keptMessage"
 
-                var button = document.createElement("button");
-                button.innerHTML = 'Delete';
-                button.className = 'btn deleteButton';
-                button.id = client.stored_bottles[i].id;
+                    var button = document.createElement("button");
+                    button.innerHTML = 'Delete';
+                    button.className = 'btn deleteButton';
+                    button.id = client.stored_bottles[i].id;
 
-                var element = document.createElement("div");
-                element.id = client.stored_bottles[i].id;
-                element.className = "message_wrapper";
-                element.appendChild(creator);
-                element.appendChild(msg);
-                element.appendChild(button);
+                    var element = document.createElement("div");
+                    element.id = client.stored_bottles[i].id;
+                    element.className = "message_wrapper";
+                    element.appendChild(creator);
+                    element.appendChild(msg);
+                    element.appendChild(button);
 
-                document.querySelector("#fixed_width").appendChild(element);
+                    document.querySelector("#fixed_width").appendChild(element);
+                }
             }
+            shown_bottles = true;
         }
-    } else {
-        dialogBox("You have no bottles! Hurry up and catch one!")
+        else {
+            dialogBox("You have no bottles! Hurry up and catch one!")
+        }
     }
 
+    else {
+        var container = document.querySelector("#fixed_width");
+        while (container.firstChild){
+            container.removeChild(container.firstChild);
+        }
+        shown_bottles = false;
+    }
 }
 
 function showCanvas() {
