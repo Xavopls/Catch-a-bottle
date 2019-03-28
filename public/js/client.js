@@ -29,8 +29,7 @@ function Client() {
     };
 
 
-    this.onResponse = (resp) => {
-    };
+    this.onResponse = (resp) => {};
 
 
     this.connect = () => {
@@ -54,7 +53,7 @@ function Client() {
                 break;
 
             case 'newBottle_await':
-                window.alert('You can not throw another bottle for ' + (60.0 - (data.time / 1000)) + ' seconds!')
+                dialogBox("You can not throw another bottle for " + (60.0 - (data.time / 1000)) + " seconds!");
                 break;
 
             case 'removed_bottle':
@@ -70,11 +69,12 @@ function Client() {
                 break;
 
             case 'bottle_not_found':
-                window.alert('Somebody has picked the bottle before you! Be faster next time :)')
+                dialogBox("Somebody has picked the bottle before you! Be faster next time :)")
+
                 break;
 
             case 'caught_bottle_timeout':
-                window.alert('You can not get another bottle for ' + (60.0 - (data.time / 1000)) + ' seconds!')
+                dialogBox("You can not get another bottle for " + (60.0 - (data.time / 1000)) + " seconds!");
                 break;
         }
 
@@ -90,7 +90,7 @@ function Client() {
     };
 
 
-        this.store_bottle = (bottle_id, callback_fn) => {
+    this.store_bottle = (bottle_id, callback_fn) => {
         var message = {
             'msg_type': 'store_bottle',
             'nickname': this.nickname,
@@ -141,7 +141,7 @@ function Client() {
         for (var i = 0; i < this.client.canvas_bottles.length; i++) {
 
             var x = Math.floor(Math.random() * (canvas.width - 100)) + 100;
-            var y = Math.floor(Math.random() * (canvas.height -100)) + 100;
+            var y = Math.floor(Math.random() * (canvas.height - 100)) + 100;
 
             this.client.canvas_bottles[i].x = x;
             this.client.canvas_bottles[i].y = y;
@@ -163,11 +163,11 @@ function Client() {
         div2.className = "modal";
 
         var creator = document.createElement("p");
-        creator.innerHTML= "— "+bottle.creator+" —";
-        creator.id="creator";
-        var msg=document.createElement("p");
-        msg.innerHTML="\""+bottle.msg+"\"";
-        msg.id="received_message";
+        creator.innerHTML = "— " + bottle.creator + " —";
+        creator.id = "creator";
+        var msg = document.createElement("p");
+        msg.innerHTML = "\"" + bottle.msg + "\"";
+        msg.id = "received_message";
 
 
 
@@ -180,7 +180,7 @@ function Client() {
         keep.innerHTML = 'Keep bottle';
         keep.className = 'keep';
         keep.id = "keep";
-        
+
         div2.appendChild(msg);
         div2.appendChild(creator);
         div2.appendChild(discard);
@@ -189,7 +189,7 @@ function Client() {
         var general_box = document.querySelector("#game_page_container");
         general_box.appendChild(div1);
         general_box.appendChild(div2);
-       
+
         var discard_listener = document.querySelector("#discard");
         discard_listener.addEventListener("click", function () {
             discardSelection(bottle.id);
@@ -206,7 +206,7 @@ function Client() {
             element.removeChild(child2);
 
             //IF STORED BOTTLE LIST IS DEPLOYED, IT IS ADDED AT THE BOTTOM
-            if ( document.querySelector("#fixed_width").hasChildNodes() ){
+            if (document.querySelector("#fixed_width").hasChildNodes()) {
                 creator = document.createElement("p");
                 creator.innerHTML = bottle.creator;
 
@@ -223,7 +223,7 @@ function Client() {
 
                 var element = document.createElement("div");
                 element.id = bottle.id;
-                element.className="message_wrapper";
+                element.className = "message_wrapper";
                 element.appendChild(creator);
                 //element.appendChild(color);
                 element.appendChild(msg);
@@ -232,7 +232,7 @@ function Client() {
                 document.querySelector("#fixed_width").appendChild(element);
             }
 
-           
+
         });
     }
 
@@ -266,6 +266,14 @@ function Client() {
         this.client.remove_bottle(bottle_id);
         var element = document.querySelector("#game_page_container");
         var child1 = document.querySelector("#window");
+        var child2 = document.querySelector("#overlay");
+        element.removeChild(child1);
+        element.removeChild(child2);
+    }
+
+    function cleanWindow() {
+        var element = document.querySelector("#game_page_container");
+        var child1 = document.querySelector("#dialogBox");
         var child2 = document.querySelector("#overlay");
         element.removeChild(child1);
         element.removeChild(child2);

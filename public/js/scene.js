@@ -15,7 +15,7 @@ send.addEventListener("click", function () {
 	var color = "#"+colors_list.options[colors_list.selectedIndex].id;
 
 	var message = document.querySelector("#message").value;
-	
+	console.log(message);
 	client.add_bottle(color, message.value);
 
 	

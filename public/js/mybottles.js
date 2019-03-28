@@ -18,7 +18,7 @@ function showMyBottles(list_bottles) {
 
             var element = document.createElement("div");
             element.id = client.stored_bottles[i].id;
-            element.className="message_wrapper";
+            element.className = "message_wrapper";
             element.appendChild(creator);
             //element.appendChild(color);
             element.appendChild(msg);
@@ -35,13 +35,13 @@ function showMyBottles(list_bottles) {
 function showCanvas() {
 
 
-    var body=document.querySelector("body");//primero elimino el video de background
-    var video=document.querySelector("#myVideo");
+    var body = document.querySelector("body"); //primero elimino el video de background
+    var video = document.querySelector("#myVideo");
     body.removeChild(video);
 
     var canvas = document.createElement("canvas");
     canvas.id = "canvas";
-    canvas.width = window.innerWidth-(350*2);
+    canvas.width = window.innerWidth - (350 * 2);
     canvas.height = window.innerHeight;
 
 
@@ -53,12 +53,11 @@ function showCanvas() {
 
 
 
-
     client.canvas.addEventListener('click', function (e) {
         var x = e.pageX - client.canvas.offsetLeft;
         var y = e.pageY - client.canvas.offsetTop;
         var id;
-        
+
         client.canvas_bottles.forEach(function (element) {
             if (Math.pow(x - element.x, 2) + Math.pow(y - element.y, 2) < Math.pow(client.diameter, 2)) {
                 id = element.id;
@@ -69,5 +68,43 @@ function showCanvas() {
 
 }
 
+function dialogBox(message) {
+    var div1 = document.createElement("div");
+    div1.id = "overlay";
+    div1.className = "overlay";
+
+    var div2 = document.createElement("div");
+    div2.id = "dialogBox";
+    div2.className = "dialogBox";
 
 
+    var msg = document.createElement("p");
+    msg.innerHTML = message;
+
+
+    var ok = document.createElement("button");
+    ok.innerHTML = 'ok';
+    ok.className = 'ok';
+    ok.id = "ok";
+
+    div2.appendChild(msg);
+    div2.appendChild(ok);
+
+    var general_box = document.querySelector("#game_page_container");
+    general_box.appendChild(div1);
+    general_box.appendChild(div2);
+
+    var clean_window = document.querySelector("#ok");
+    clean_window.addEventListener("click", function () {
+        cleanWindow();
+    });
+
+};
+
+function cleanWindow() {
+    var element = document.querySelector("#game_page_container");
+    var child1 = document.querySelector("#dialogBox");
+    var child2 = document.querySelector("#overlay");
+    element.removeChild(child1);
+    element.removeChild(child2);
+};
