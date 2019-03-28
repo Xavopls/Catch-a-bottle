@@ -310,3 +310,12 @@ h1 {
 	text-shadow: 0px -1px 0px #FFC108;
 }
 
+.purple_button {
+	-moz-box-shadow: 0px 1px 0px 0px #661466;
+	-webkit-box-shadow: 0px 1px 0px 0px #661466;
+	box-shadow: 0px 1px 0px 0px #661466;
+	background-color: #661466;
+	color: #661466;
+	text-shadow: 0px -1px 0px #661466;
+}
+
