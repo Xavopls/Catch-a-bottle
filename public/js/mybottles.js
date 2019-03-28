@@ -27,6 +27,9 @@ function showMyBottles() {
                     element.appendChild(button);
 
                     document.querySelector("#fixed_width").appendChild(element);
+
+                    document.getElementById("myBottlesButton").innerHTML = 'Hide my bottles';
+
                 }
             }
             shown_bottles = true;
@@ -41,6 +44,8 @@ function showMyBottles() {
         while (container.firstChild){
             container.removeChild(container.firstChild);
         }
+        document.getElementById("myBottlesButton").innerHTML = 'Show my bottles';
+
         shown_bottles = false;
     }
 }
