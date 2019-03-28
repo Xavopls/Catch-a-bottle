@@ -10,9 +10,13 @@ MyBottles_buton.addEventListener("click", showMyBottles);
 
 var send = document.querySelector("#send");
 send.addEventListener("click", function () {
+
+	var colors_list = document.querySelector("#colors_list");
+	var color = "#"+colors_list.options[colors_list.selectedIndex].id;
+
 	var message = document.querySelector("#message").value;
-	var color = document.querySelector("#color").value;
-	client.add_bottle(color.value, message.value);
+	
+	client.add_bottle(color, message.value);
 
 	
 
