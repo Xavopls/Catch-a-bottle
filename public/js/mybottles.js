@@ -27,7 +27,7 @@ function showMyBottles(list_bottles) {
             document.querySelector("#fixed_width").appendChild(element);
         }
     } else {
-        alert("You have no bottles! Hurry up and catch one!");
+        dialogBox("You have no bottles! Hurry up and catch one!")
     }
 
 }

@@ -7,9 +7,7 @@ function Bottle() {
     this.y = '';
 }
 
-
 function Client() {
-
     this.nickname = "";
     this.id = "";
     this.stored_bottles = [];
@@ -23,14 +21,10 @@ function Client() {
     //this.ws = new WebSocket('ws://ecv-etic.upf.edu:9048');
     this.ws.z = () => {
         console.log('Websocket connected!');
-
-        // sending a send event to websocket server
         this.ws.send('connected')
     };
 
-
     this.onResponse = (resp) => {};
-
 
     this.connect = () => {
         this.ws.send("You are connected!")
@@ -70,14 +64,12 @@ function Client() {
 
             case 'bottle_not_found':
                 dialogBox("Somebody has picked the bottle before you! Be faster next time :)")
-
                 break;
 
             case 'caught_bottle_timeout':
                 dialogBox("You can not get another bottle for " + Math.trunc((60.0 - (data.time / 1000))) + " seconds!");
                 break;
         }
-
     };
 
     this.login = (nickname, callback_fn) => {
