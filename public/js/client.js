@@ -270,12 +270,4 @@ function Client() {
         element.removeChild(child1);
         element.removeChild(child2);
     }
-
-    function cleanWindow() {
-        var element = document.querySelector("#game_page_container");
-        var child1 = document.querySelector("#dialogBox");
-        var child2 = document.querySelector("#overlay");
-        element.removeChild(child1);
-        element.removeChild(child2);
-    }
 }
