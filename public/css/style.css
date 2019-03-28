@@ -179,6 +179,8 @@ h1 {
 #received_message {
 	font-weight: bold;
 	font-size: 40px;
+	margin-left: 40px;
+    margin-right: 40px;
 }
 
 

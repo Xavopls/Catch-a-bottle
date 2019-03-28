@@ -246,7 +246,7 @@ function Client() {
 
     function discardSelection(bottle_id) {
         this.client.remove_bottle(bottle_id);
-        var wrapper = document.querySelector("#game_page_container");
+        var wrapper = document.querySelector("#seaPageContainer");
         var child1 = document.querySelector("#window");
         var child2 = document.querySelector("#overlay");
         wrapper.removeChild(child1);

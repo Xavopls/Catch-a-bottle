@@ -102,7 +102,7 @@ function dialogBox(message) {
 };
 
 function cleanWindow() {
-    var wrapper = document.querySelector("#game_page_container");
+    var wrapper = document.querySelector("#seaPageContainer");
     var child1 = document.querySelector("#dialogBox");
     var child2 = document.querySelector("#overlay");
     wrapper.removeChild(child1);
