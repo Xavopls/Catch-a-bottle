@@ -1,4 +1,4 @@
-function showMyBottles(list_bottles) {
+function showMyBottles() {
 
     if (client.stored_bottles.length > 0) {
         if (!document.querySelector("#fixed_width").hasChildNodes()) {

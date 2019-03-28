@@ -44,6 +44,7 @@ function Client() {
 
             case 'new_bottle_added_response':
                 this.thrown_bottles_ids.push(data.bottle.id);
+                dialogBox('Your bottle is now sailing the seas...');
                 break;
 
             case 'newBottle_await':
@@ -63,7 +64,7 @@ function Client() {
                 break;
 
             case 'bottle_not_found':
-                dialogBox("Somebody has picked the bottle before you! Be faster next time :)")
+                dialogBox("Somebody has picked the bottle before you! Be faster next time :)");
                 break;
 
             case 'caught_bottle_timeout':

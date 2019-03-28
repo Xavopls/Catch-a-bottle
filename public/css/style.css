@@ -73,6 +73,9 @@ input {
 	width: 100%;
 }
 
+#message{
+	 margin-top: 3%;
+ }
 #discardButton {
 	margin-right: 70px;
 	margin-top: 90px;
@@ -247,13 +250,9 @@ h1 {
 }
 
 
-
-
-
-
-
-
-
+#colorsList{
+	text-decoration-color;
+}
 
 
 
