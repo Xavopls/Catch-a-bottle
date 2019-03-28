@@ -121,7 +121,7 @@ function Client() {
         this.client.canvas_bottles = data.bottle_list;
 
         document.querySelector("#loginPageContainer").style.display = "none";
-        document.querySelector("#game_page_container").style.display = "inline";
+        document.querySelector("#seaPageContainer").style.display = "inline";
 
         showCanvas();
 
