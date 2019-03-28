@@ -208,13 +208,13 @@ function Client() {
                 button.id = bottle.id;
 
                 var element = document.createElement("div");
-                wrapper.id = bottle.id;
-                wrapper.className = "message_wrapper";
-                wrapper.appendChild(creator);
-                wrapper.appendChild(msg);
-                wrapper.appendChild(button);
+                element.id = bottle.id;
+                element.className = "message_wrapper";
+                element.appendChild(creator);
+                element.appendChild(msg);
+                element.appendChild(button);
 
-                document.querySelector("#fixed_width").appendChild(wrapper);
+                document.querySelector("#fixed_width").appendChild(element);
             }
         });
     }
