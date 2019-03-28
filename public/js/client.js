@@ -47,7 +47,7 @@ function Client() {
                 break;
 
             case 'newBottle_await':
-                dialogBox("You can not throw another bottle for " + Math.trunc((60.0 - (data.time / 1000))) + " seconds!");
+                dialogBox("You can not throw another bottle for " + (Math.trunc((60.0 - (data.time / 1000)))==0 ? 1 :Math.trunc((60.0 - (data.time / 1000)))) + " seconds!");
                 break;
 
             case 'removed_bottle':
@@ -67,7 +67,7 @@ function Client() {
                 break;
 
             case 'caught_bottle_timeout':
-                dialogBox("You can not get another bottle for " + Math.trunc((60.0 - (data.time / 1000))) + " seconds!");
+                dialogBox("You can not get another bottle for " + (Math.trunc((60.0 - (data.time / 1000)))==0 ? 1 :Math.trunc((60.0 - (data.time / 1000)))) + " seconds!");
                 break;
         }
     };
