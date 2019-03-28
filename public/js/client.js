@@ -195,12 +195,11 @@ function Client() {
             if (document.querySelector("#fixed_width").hasChildNodes()) {
                 creator = document.createElement("p");
                 creator.innerHTML = bottle.creator;
-
-                var color = document.createElement("p");
-                color.innerHTML = bottle.color;
+                creator.className ="keptCreator"
 
                 var msg = document.createElement("p");
-                msg.innerHTML = bottle.msg;
+                msg.innerHTML =  "— "+bottle.msg+" —";
+                msg.className ="keptMessage"
 
                 var button = document.createElement("button");
                 button.innerHTML = 'Delete';

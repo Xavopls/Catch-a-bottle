@@ -4,12 +4,11 @@ function showMyBottles(list_bottles) {
         for (var i = 0; i < client.stored_bottles.length; i++) {
             var creator = document.createElement("p");
             creator.innerHTML = client.stored_bottles[i].creator;
-
-            var color = document.createElement("p");
-            color.innerHTML = client.stored_bottles[i].color;
+            creator.className ="keptCreator"
 
             var msg = document.createElement("p");
-            msg.innerHTML = client.stored_bottles[i].msg;
+            msg.innerHTML = "— "+client.stored_bottles[i].msg+" —";
+            msg.className ="keptMessage"
 
             var button = document.createElement("button");
             button.innerHTML = 'Delete';
@@ -20,7 +19,6 @@ function showMyBottles(list_bottles) {
             element.id = client.stored_bottles[i].id;
             element.className = "message_wrapper";
             element.appendChild(creator);
-            //element.appendChild(color);
             element.appendChild(msg);
             element.appendChild(button);
 
@@ -80,12 +78,13 @@ function dialogBox(message) {
 
     var msg = document.createElement("p");
     msg.innerHTML = message;
+    msg.className="alert";
 
 
     var ok = document.createElement("button");
-    ok.innerHTML = 'ok';
-    ok.className = 'ok';
-    ok.id = "ok";
+    ok.innerHTML = 'Ok';
+    ok.className = 'btn';
+    ok.id = "okButton";
 
     div2.appendChild(msg);
     div2.appendChild(ok);
@@ -94,7 +93,7 @@ function dialogBox(message) {
     wrapper.appendChild(div1);
     wrapper.appendChild(div2);
 
-    var clean_window = document.querySelector("#ok");
+    var clean_window = document.querySelector("#okButton");
     clean_window.addEventListener("click", function () {
         cleanWindow();
     });

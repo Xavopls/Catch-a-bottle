@@ -39,6 +39,7 @@ input {
 	color: black;
 	border-radius: 4px;
 }
+
 /***************************************************/
 /***********************Buttons***********************/
 .btn {
@@ -84,11 +85,18 @@ input {
 	border: 1px solid #2196F3;
 }
 
-.deleteButton{
+.deleteButton {
 	background-color: #f11419;
 	border: 1px solid #f11419;
 	margin-left: 227px;
 }
+
+#okButton {
+	background-color: #2196F3;
+	border: 1px solid #2196F3;
+	margin-top: 10px;
+}
+
 /***************************************************/
 /***********************Login***********************/
 #loginPageContainer {
@@ -132,9 +140,11 @@ h1 {
 	line-height: 1;
 	text-align: center;
 }
+
 #seaPageContainer {
 	display: none;
 }
+
 /***************************************************/
 /***********************Pop-up**********************/
 .overlay {
@@ -164,11 +174,16 @@ h1 {
 
 #dialogBox {
 	width: 400px;
-	height: 250px;
+	height: 150px;
 	margin-top: -125px;
 	margin-left: -200px;
-	padding-top: 10px;
+	padding-top: 18px;
 }
+
+.alert {
+	font-weight: bold;
+}
+
 
 #creator {
 	font-size: 25px;
@@ -180,9 +195,36 @@ h1 {
 	font-weight: bold;
 	font-size: 40px;
 	margin-left: 40px;
-    margin-right: 40px;
+	margin-right: 40px;
+}
+/***************************************************/
+
+
+/*Left content*/
+#fixed_width {
+	width: 350px;
+	padding: 0px;
+	float: left;
 }
 
+.message_wrapper {
+	margin-top: 20px;
+	margin-left: 20px;
+
+	background-color: #fdfdfdc9;
+	border-radius: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.keptCreator{
+
+}
+
+.keptMessage{
+	font-style: italic;
+}
 
 /*Mid content*/
 #unfixed_width {
@@ -204,7 +246,22 @@ h1 {
 	padding-top: 50px;
 }
 
-.colorButton{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.colorButton {
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
@@ -253,21 +310,3 @@ h1 {
 	text-shadow: 0px -1px 0px #FFC108;
 }
 
-/*Left content*/
-#fixed_width {
-	width: 350px;
-	padding: 0px;
-	float: left;
-}
-
-.message_wrapper {
-	margin-top: 20px;
-	margin-left: 20px;
-
-	background-color: #fdfdfdc9;
-	border-radius: 15px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 20px;
-	padding-right: 20px;
-}
