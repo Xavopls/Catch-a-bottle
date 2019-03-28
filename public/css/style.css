@@ -91,6 +91,16 @@ h1 {
 	margin-right: 20%;
 }
 
+.btn{
+	font-size: 15px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding: 9px 14px;
+	width: 100%;
+}
+
 /*Login*/
 #myVideo {
 	position: fixed;
@@ -155,7 +165,7 @@ h1 {
 	text-transform: capitalize;
 }
 
-.discard{
+#discard{
 	margin-right: 70px;
 	margin-top: 90px;
 	
@@ -169,7 +179,7 @@ h1 {
 	border-radius: 5px;
 }
 
-.keep{
+#keep{
 	background-color: #2196F3;
 	border: 1px solid #2196F3;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -220,31 +230,16 @@ h1 {
 }
 
 
-#send{
+#sendMessageButton{
 	background-color: #2196F3;
 	border: 1px solid #2196F3;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	color: white;
-	padding: 9px 14px;
-    font-size: 15px;
-	border-radius: 5px;
-	margin-bottom: 10px;
-	width: 100%;
-
 }
 
 #myBottlesButton{
 	background-color: #f3bc21;
 	border: 1px solid #f3bc21;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	color: #000000;
-	padding: 9px 14px;
-    font-size: 15px;
-	border-radius: 5px;
-	margin-bottom: 10px;
-	width: 100%;
 }
 
 

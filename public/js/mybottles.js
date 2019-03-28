@@ -13,7 +13,7 @@ function showMyBottles(list_bottles) {
 
             var button = document.createElement("button");
             button.innerHTML = 'Delete';
-            button.className = 'delete_button';
+            button.className = 'delete_button btn';
             button.id = client.stored_bottles[i].id;
 
             var element = document.createElement("div");
@@ -35,7 +35,7 @@ function showMyBottles(list_bottles) {
 function showCanvas() {
 
 
-    var body = document.querySelector("body"); //primero elimino el video de background
+    var body = document.querySelector("body");
     var video = document.querySelector("#myVideo");
     body.removeChild(video);
 
@@ -52,7 +52,7 @@ function showCanvas() {
     client.context = this.client.canvas.getContext('2d');
 
 
-
+    //El sistema de click en un circulo esta inspirado en https://codepen.io/DanielTate/pen/NGLRGg
     client.canvas.addEventListener('click', function (e) {
         var x = e.pageX - client.canvas.offsetLeft;
         var y = e.pageY - client.canvas.offsetTop;
@@ -90,9 +90,9 @@ function dialogBox(message) {
     div2.appendChild(msg);
     div2.appendChild(ok);
 
-    var general_box = document.querySelector("#game_page_container");
-    general_box.appendChild(div1);
-    general_box.appendChild(div2);
+    var wrapper = document.querySelector("#game_page_container");
+    wrapper.appendChild(div1);
+    wrapper.appendChild(div2);
 
     var clean_window = document.querySelector("#ok");
     clean_window.addEventListener("click", function () {
@@ -102,9 +102,9 @@ function dialogBox(message) {
 };
 
 function cleanWindow() {
-    var element = document.querySelector("#game_page_container");
+    var wrapper = document.querySelector("#game_page_container");
     var child1 = document.querySelector("#dialogBox");
     var child2 = document.querySelector("#overlay");
-    element.removeChild(child1);
-    element.removeChild(child2);
+    wrapper.removeChild(child1);
+    wrapper.removeChild(child2);
 };

@@ -53,7 +53,7 @@ function Client() {
                 break;
 
             case 'newBottle_await':
-                dialogBox("You can not throw another bottle for " + (60.0 - (data.time / 1000)) + " seconds!");
+                dialogBox("You can not throw another bottle for " + Math.trunc((60.0 - (data.time / 1000))) + " seconds!");
                 break;
 
             case 'removed_bottle':
@@ -74,7 +74,7 @@ function Client() {
                 break;
 
             case 'caught_bottle_timeout':
-                dialogBox("You can not get another bottle for " + (60.0 - (data.time / 1000)) + " seconds!");
+                dialogBox("You can not get another bottle for " + Math.trunc((60.0 - (data.time / 1000))) + " seconds!");
                 break;
         }
 
@@ -122,21 +122,16 @@ function Client() {
         this.onResponse = callback_fn
     };
 
-
-    function initialize(data) { //no se perque pero he de posar client abans dompli els propis atributs
+    function initialize(data) {
         this.client.nickname = data.nickname;
         this.client.id = data.id;
         this.client.stored_bottles = data.stored_bottles;
         this.client.canvas_bottles = data.bottle_list;
 
-        document.querySelector("#login_page_container").style.display = "none"; //Ocultamos login y desplegamos el chat
+        document.querySelector("#login_page_container").style.display = "none";
         document.querySelector("#game_page_container").style.display = "inline";
 
-
         showCanvas();
-
-
-
 
         for (var i = 0; i < this.client.canvas_bottles.length; i++) {
 
@@ -148,7 +143,6 @@ function Client() {
         }
 
         drawFrame();
-
     }
 
     function caught_bottle(bottle) {
@@ -199,11 +193,11 @@ function Client() {
         var keep_bottle = document.querySelector("#keep");
         keep_bottle.addEventListener("click", function () {
 
-            var element = document.querySelector("#game_page_container");
+            var wrapper = document.querySelector("#game_page_container");
             var child1 = document.querySelector("#window");
             var child2 = document.querySelector("#overlay");
-            element.removeChild(child1);
-            element.removeChild(child2);
+            wrapper.removeChild(child1);
+            wrapper.removeChild(child2);
 
             //IF STORED BOTTLE LIST IS DEPLOYED, IT IS ADDED AT THE BOTTOM
             if (document.querySelector("#fixed_width").hasChildNodes()) {
@@ -222,17 +216,14 @@ function Client() {
                 button.id = bottle.id;
 
                 var element = document.createElement("div");
-                element.id = bottle.id;
-                element.className = "message_wrapper";
-                element.appendChild(creator);
-                //element.appendChild(color);
-                element.appendChild(msg);
-                element.appendChild(button);
+                wrapper.id = bottle.id;
+                wrapper.className = "message_wrapper";
+                wrapper.appendChild(creator);
+                wrapper.appendChild(msg);
+                wrapper.appendChild(button);
 
-                document.querySelector("#fixed_width").appendChild(element);
+                document.querySelector("#fixed_width").appendChild(wrapper);
             }
-
-
         });
     }
 
@@ -261,13 +252,12 @@ function Client() {
         }
     }
 
-
     function discardSelection(bottle_id) {
         this.client.remove_bottle(bottle_id);
-        var element = document.querySelector("#game_page_container");
+        var wrapper = document.querySelector("#game_page_container");
         var child1 = document.querySelector("#window");
         var child2 = document.querySelector("#overlay");
-        element.removeChild(child1);
-        element.removeChild(child2);
+        wrapper.removeChild(child1);
+        wrapper.removeChild(child2);
     }
 }

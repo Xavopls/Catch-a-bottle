@@ -1,27 +1,15 @@
+var myBottlesButton = document.querySelector("#myBottlesButton");
+myBottlesButton.addEventListener("click", showMyBottles);
 
+var sendMessageButton = document.querySelector("#sendMessageButton");
+sendMessageButton.addEventListener("click", function () {
 
-//Escucha de boton My Bottles
-var MyBottles_buton = document.querySelector("#myBottlesButton");
-MyBottles_buton.addEventListener("click", showMyBottles);
+	var wrapper = document.querySelector("#colorsList");
+	var color = "#"+wrapper.options[wrapper.selectedIndex].id;
 
-
-
-
-
-var send = document.querySelector("#send");
-send.addEventListener("click", function () {
-
-	var colors_list = document.querySelector("#colors_list");
-	var color = "#"+colors_list.options[colors_list.selectedIndex].id;
-
-	var message = document.querySelector("#message").value;
-	console.log(message);
-	client.add_bottle(color, message.value);
-
-	
-
+	var messageInput = document.querySelector("#message");
+	client.add_bottle(color, messageInput.value);
 });
-
 
 function getMousePos(c, evt) {
     var rect = client.canvas.getBoundingClientRect();
@@ -31,22 +19,15 @@ function getMousePos(c, evt) {
     };
 };
 
-
-
 function makeCircle(context, x, y, color) {
-
 	context.beginPath();
 	context.arc(x, y, client.diameter, 0, Math.PI * 2, true);
-	context.fillStyle = color;
+	context.fillStyle = color =="" ? "#009588" :color;
 	context.fill();
 	context.closePath();
-
-
 };
 
-
 function drawFrame() {
-
 	var canvas = client.canvas;
 	var context = client.context;
 
@@ -63,7 +44,6 @@ function drawFrame() {
 			makeCircle(context, circle.x, circle.y, circle.color);
 		}
 	}
-
 	requestAnimationFrame(drawFrame);
 }
 
