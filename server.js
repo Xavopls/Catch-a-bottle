@@ -351,7 +351,7 @@ var lastBottlePickedTimeout = function(nickname){
     for (var i = 0; i < clients.length; i++) {
         if (clients[i].nickname === nickname) {
             var diff = Math.abs(new Date() - clients[i].last_bottle_picked_time);
-            if ( diff > 10000 ){
+            if ( diff > 20000 ){
                 clients[i].last_bottle_picked_time = new Date();
                 return [true, diff];
             }
@@ -366,7 +366,7 @@ var lastBottleThrownTimeout = function(nickname){
     for (var i = 0; i < clients.length; i++) {
         if (clients[i].nickname === nickname) {
             var diff = Math.abs(new Date() - clients[i].last_bottle_created_time);
-            if ( diff > 10000 ){
+            if ( diff > 20000 ){
                 clients[i].last_bottle_created_time = new Date();
                 return [true, diff];
             }
