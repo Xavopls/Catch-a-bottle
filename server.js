@@ -27,30 +27,30 @@ for (var i = 1; i <= names.length; i++) {
 
 
 var bottle2 = new Bottle();
-bottle2.id = 2;
+bottle2.id = 300;
 bottle2.creator = 'xavi';
-bottle2.color = 'blue';
+bottle2.color = '#f4f4f4';
 bottle2.msg = 'Bebiendo vino, uno ve las cosas diferentes';
 
 
 var bottle3 = new Bottle();
-bottle3.id = 3;
+bottle3.id = 301;
 bottle3.creator = 'Manu Carreño';
-bottle3.color = 'black';
+bottle3.color = '#F44336';
 bottle3.msg = 'La webcam esta obsoleta';
 
 
 var bottle4 = new Bottle();
-bottle4.id = 4;
+bottle4.id = 302;
 bottle4.creator = 'Roger';
-bottle4.color = 'orange';
+bottle4.color = '#FFC108';
 bottle4.msg = 'Juego a basket';
 
 
 var bottle5 = new Bottle();
-bottle5.id = 5;
+bottle5.id = 303;
 bottle5.creator = 'Turron_xixona';
-bottle5.color = 'black';
+bottle5.color = '#009588';
 bottle5.msg = 'No se me ocurre nada, sorry gente, un abrazo';
 
 
@@ -183,12 +183,13 @@ function login(client, client_msg) {
         new_user.id = client_count;
         clients.push(new_user);
         client.nickname = client_msg.nickname;
-        clients_socket.push(client);
         id = new_user.id;
 
         console.log('Nuevo usuario: ' + new_user.nickname);
 
     }
+
+    clients_socket.push(client);
 
     var msg = {
         'msg_type': 'logged_user',
@@ -350,7 +351,7 @@ var lastBottlePickedTimeout = function(nickname){
     for (var i = 0; i < clients.length; i++) {
         if (clients[i].nickname === nickname) {
             var diff = Math.abs(new Date() - clients[i].last_bottle_picked_time);
-            if ( diff > 60000 ){
+            if ( diff > 10000 ){
                 clients[i].last_bottle_picked_time = new Date();
                 return [true, diff];
             }
@@ -365,7 +366,7 @@ var lastBottleThrownTimeout = function(nickname){
     for (var i = 0; i < clients.length; i++) {
         if (clients[i].nickname === nickname) {
             var diff = Math.abs(new Date() - clients[i].last_bottle_created_time);
-            if ( diff > 60000 ){
+            if ( diff > 10000 ){
                 clients[i].last_bottle_created_time = new Date();
                 return [true, diff];
             }
