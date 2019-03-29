@@ -222,7 +222,7 @@ h1 {
 	padding-right: 20px;
 }
 .keptCreator{
-
+	text-transform: capitalize;
 }
 
 .keptMessage{
