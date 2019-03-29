@@ -40,12 +40,13 @@ function Client() {
 
             case 'caught_bottle':
                 caught_bottle(data.bottle);
+                sound2();
                 break;
 
             case 'new_bottle_added_response':
                 this.thrown_bottles_ids.push(data.bottle.id);
                 dialogBox('Your bottle is now sailing the seas...');
-                sound();
+                sound1();
                 break;
 
             case 'newBottle_await':

@@ -128,7 +128,11 @@ function cleanWindow() {
     wrapper.removeChild(child2);
 };
 
-function sound(){
-    var audio = document.querySelector('#myAudio');
+function sound1(){
+    var audio = document.querySelector('#waterAudio');
+    audio.play();
+}
+function sound2(){
+    var audio = document.querySelector('#bottleAudio');
     audio.play();
 }
