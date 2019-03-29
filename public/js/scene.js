@@ -9,6 +9,7 @@ sendMessageButton.addEventListener("click", function () {
 
 	var messageInput = document.querySelector("#message");
 	client.add_bottle(color, messageInput.value);
+	messageInput.value=messageInput.defaultValue;
 });
 
 function getMousePos(c, evt) {
