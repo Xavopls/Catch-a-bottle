@@ -127,3 +127,8 @@ function cleanWindow() {
     wrapper.removeChild(child1);
     wrapper.removeChild(child2);
 };
+
+function sound(){
+    var audio = document.querySelector('#myAudio');
+    audio.play();
+}

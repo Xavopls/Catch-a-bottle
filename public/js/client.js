@@ -45,6 +45,7 @@ function Client() {
             case 'new_bottle_added_response':
                 this.thrown_bottles_ids.push(data.bottle.id);
                 dialogBox('Your bottle is now sailing the seas...');
+                sound();
                 break;
 
             case 'newBottle_await':
